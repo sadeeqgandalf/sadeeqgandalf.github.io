@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sadeeq Adeyemi · CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+@page{size:Letter;margin:.55in .6in}
+*{box-sizing:border-box}
+body{margin:0;font:9.4pt/1.42 Inter,Helvetica,sans-serif;color:#1b1d22}
+a{color:inherit;text-decoration:none}
+h1{font:600 22pt/1 "Source Serif 4",Georgia,serif;margin:0}
+.title{font:500 10.5pt Inter,sans-serif;color:#1f4e8c;margin:.35rem 0 .15rem}
+.focus{color:#5d6370;margin:0}
+.contact{margin-top:.35rem;color:#5d6370;font-size:8.8pt}
+.contact span+span::before{content:" · "}
+h2{font:600 8pt Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#1f4e8c;border-bottom:1px solid #c9d3e2;padding-bottom:2px;margin:12pt 0 6pt}
+.entry{margin:0 0 7.5pt;break-inside:avoid}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.head b{font:600 10.3pt "Source Serif 4",Georgia,serif}
+.head .when{color:#5d6370;font-size:8.6pt;white-space:nowrap}
+.meta{color:#5d6370;font-style:italic;margin:.5pt 0 2pt}
+ul{margin:1.5pt 0 0;padding-left:12pt}
+li{margin:1.3pt 0}
+p{margin:0}
+.lead{margin-bottom:2pt}
+.k{font-weight:600}
+.skills{display:grid;grid-template-columns:auto 1fr;gap:2pt 10pt}
+.skills dt{font-weight:600}.skills dd{margin:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 18pt}
+.small{font-size:8.6pt;color:#5d6370}
+</style>
+</head>
+<body>
+<header>
+  <h1>Sadeeq Adeyemi</h1>
+  <p class="title">Computer Vision &amp; Perception Engineer</p>
+  <p class="focus">Multi-Object Tracking · Sensor Fusion · State Estimation · Deep Learning for Robotics &amp; Autonomous Systems</p>
+  <p class="contact"><span>Bangor, Maine</span><span><a href="mailto:sideeqadeyemi@icloud.com">sideeqadeyemi@icloud.com</a></span><span><a href="https://sadeeqgandalf.github.io">sadeeqgandalf.github.io</a></span><span><a href="https://github.com/sadeeqgandalf">github.com/sadeeqgandalf</a></span><span><a href="https://www.linkedin.com/in/sadeeq-a-a90bb425a">LinkedIn</a></span></p>
+</header>
+
+<h2>Profile</h2>
+<p>Perception engineer working on one problem: <b>keeping track of what a robot cannot see.</b> I build multi-object trackers that reason explicitly about occlusion, fuse cameras, lidar and radar, and test every claim with controlled ablations over many random seeds, reported with confidence intervals. A civil and structural engineering background (fabrication, field testing, defect detection in steel) shapes how I work: measure, cross-check against a reference, and state the limits.</p>
+
+<h2>Research</h2>
+<div class="entry">
+  <div class="head"><b>Occlusion-Aware Multi-Object Tracking for Lunar Surface Operations</b><span class="when">2026 · independent research</span></div>
+  <p class="meta">Python · PyTorch3D · JavaScript / Three.js · MATLAB — <a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking">github.com/sadeeqgandalf/lunar-occlusion-tracking</a></p>
+  <p class="lead">Can a rover's mast camera keep astronauts' identities when they walk behind boulders or into long south-pole shadows (Artemis EVA scenario)?</p>
+  <ul>
+    <li><span class="k">Visibility model.</span> 3-D line of sight from a 2.2 m mast camera to 16 points on each body against half-buried ellipsoid boulders, plus cast shadows from a low polar sun, giving each track an expected detection probability.</li>
+    <li><span class="k">Tracker.</span> Constant-velocity EKF per track, χ² gating, Hungarian assignment with an explicit missed-detection option, Bernoulli track existence. Occlusion-aware variants treat a miss as evidence of absence only in proportion to expected visibility; a negative-information update, p(x | miss) ∝ p(x)(1 − P<sub>D</sub>(x)), keeps hidden estimates inside the blind zone.</li>
+    <li><span class="k">Results</span> (20 seeds × 300 s, identical detections, Wilson 95% intervals). Identities kept through 1–5 s occlusions: <b>0% naive → 46% with negative information → 89% with appearance re-ID</b>. ID switches per run: 75.6 → 23.3 with one camera, <b>6.6</b> fusing camera, lidar and a second (lander) camera.</li>
+    <li><span class="k">Sensor-fusion finding.</span> Adding sensors to a tracker without a visibility model raises ID switches 3.4× (75.6 → 254): every sensor that cannot see a person reports them gone. A second viewpoint helped more than a better sensor on the same mast.</li>
+    <li><span class="k">PyTorch3D rendered-camera pipeline.</span> Built PyTorch3D from source on Apple Silicon (C++20 patch). Rendered the scene from the rover mast and a lander camera; detections come from pixels: visible fraction from silhouettes, range from the depth map, bearing from pixel position, and a colour appearance signature. Static scenery rendered once and per-person windows composited by depth: exact, ~20× faster (0.13 s/frame).</li>
+    <li><span class="k">Re-identification and PHD.</span> DeepSORT-style appearance likelihoods and long-gap re-ID raise same-ID after hides over 5 s from 8% to 50%; an identical-suit control (28%) bounds what appearance can contribute. A particle PHD filter with visibility-dependent P<sub>D</sub> maps where hidden people can be.</li>
+    <li><span class="k">Verification.</span> Python port reproduces the JavaScript engine exactly (cross-check test); MATLAB port compared against MathWorks <i>trackerGNN</i>, <i>trackerJPDA</i> (JIPDA) and <i>trackerTOMHT</i>. Metrics: CLEAR-MOT, IDF1, GOSPA, occlusion survival by duration. Every table regenerates from one script, stamped with its git commit.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="head"><b>Closed-Loop Autonomous Driving Stack</b><span class="when">2026</span></div>
+  <p class="meta">Python · SAM 3 (Hugging Face transformers) · sensor fusion · planning and control</p>
+  <ul>
+    <li>Full stack that sees only sensor data, never simulator ground truth: EKF localization (IMU, wheel odometry, GNSS, lane-marking map matching); open-vocabulary camera segmentation with SAM 3, lifted to 3-D on lidar; radar Doppler; class-aware CTRV/CV multi-object tracker; prediction; Frenet lattice planner; LQR lateral and PID longitudinal control; independent safety monitor with corroborated-track emergency braking.</li>
+    <li>Occlusion reasoning spawns "phantom pedestrians" in blind zones. Monte Carlo over 10 scenarios × 10 seeds: <b>100/100 runs pass</b> with 0 collisions. Ablation: without occlusion reasoning, a pedestrian stepping out from behind a bus is struck in <b>5 of 10</b> runs.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="head"><b>Open-Vocabulary Segmentation and Tracking on Driving Video</b><span class="when">2026</span></div>
+  <p class="meta">SAM 3 · KITTI tracking · BDD100K · TrackEval — <a href="https://github.com/sadeeqgandalf/ComputerVision_Research">github.com/sadeeqgandalf/ComputerVision_Research</a></p>
+  <ul><li>Text-prompted segmentation and video tracking (MOTS) with Meta's SAM 3; per-prompt masklets merged into one global identity space; evaluation with TrackEval (HOTA).</li></ul>
+</div>
+
+<div class="entry">
+  <div class="head"><b>Sensor Fusion from Raw Signals</b><span class="when">2026</span></div>
+  <p class="meta">MATLAB · Sensor Fusion and Tracking, Automated Driving and Signal Processing toolboxes</p>
+  <ul><li>FMCW radar from raw IF samples to range-Doppler maps, CFAR detection, angle estimation and calibrated detections with ego-motion; accuracy compared with the Cramér–Rao bound. IMU noise by Allan variance and GNSS error models. Algorithms written from scratch and cross-validated against MathWorks reference implementations, with unit tests on every numerical claim.</li></ul>
+</div>
+
+<div class="entry">
+  <div class="head"><b>Lidar Perception and Moving-Object Segmentation on Argoverse 2</b><span class="when">2026</span></div>
+  <p class="meta">Python · Open3D · scikit-learn · Rerun</p>
+  <ul><li>Ground removal, DBSCAN clustering and PCA-oriented bounding boxes on real sweeps. Moving-object segmentation from SE(3) ego-motion compensation, nearest-neighbour motion residuals and local scene-flow coherence, graded against ground-truth movers in the city frame.</li></ul>
+</div>
+
+<div class="entry">
+  <div class="head"><b>Navigation Filters under Faults</b><span class="when">2026</span></div>
+  <p class="meta">JavaScript · MATLAB — Mars rover, aircraft, and spacecraft docking with NASA's Gateway</p>
+  <ul><li>Dead reckoning, EKF, UKF and particle filter on identical sensor streams under injected faults, following <i>Probabilistic Robotics</i>; consistency checked with NEES/NIS, every analytic Jacobian verified by finite differences. Clohessy–Wiltshire rendezvous with a 6-state EKF and gated approach (MATLAB port).</li></ul>
+</div>
+
+<div class="entry">
+  <div class="head"><b>Deep Learning for Vision</b><span class="when">2025 – 2026</span></div>
+  <ul>
+    <li><span class="k">Vision Transformer, from scratch (PyTorch).</span> 7-class dermoscopy (HAM10000), compared against a pretrained ViT; class-weighted loss, warm-up schedule, per-class AUC, [CLS] attention maps.</li>
+    <li><span class="k">NeRF reimplementation (in progress).</span> Ray generation, positional encoding, hierarchical sampling, volume rendering; 22 tests.</li>
+    <li><span class="k">Dashcam perception.</span> YOLOv8 detection, IoU tracking with coasting, lane detection, distance and time-to-collision; 24 regression tests.</li>
+  </ul>
+</div>
+
+<h2>Experience</h2>
+<div class="entry">
+  <div class="head"><b>Robotics Research Assistant</b><span class="when">2025 – present · Orono, Maine</span></div>
+  <p class="meta">University of Maine, Robotics Laboratory</p>
+  <ul>
+    <li>Build and integrate hardware and software for mobile robot platforms: sensor mounting, wiring, and ROS 2 nodes for autonomous navigation.</li>
+    <li>Implement EKF state estimation fusing IMU, wheel odometry and lidar for indoor and outdoor localization.</li>
+    <li>Develop costmap-based path planning and obstacle avoidance with global and local planners in ROS 2; build point-cloud processing and detection pipelines for autonomous-vehicle research.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="head"><b>Materials Engineer</b> <span class="when">2024 · CPT placement, United States</span></div>
+  <p class="meta">R.W. Gillespie</p>
+  <ul><li>Field and laboratory materials testing (compaction, concrete strength, aggregate gradation) to ASTM standards on active construction sites, with zero non-conformance incidents across inspected batches.</li></ul>
+</div>
+<div class="entry">
+  <div class="head"><b>Machine Learning Engineer and Structural Steel Fabricator</b><span class="when">2018 – 2023 · Nigeria</span></div>
+  <p class="meta">NewTech Steel</p>
+  <ul>
+    <li>Designed and deployed an in-house computer vision model for real-time detection of fatigue and structural defects in steel members, integrated into production monitoring.</li>
+    <li>Built an automated testing framework that cut testing time by 50%; maintained production models with versioning and performance monitoring.</li>
+    <li>Led fabrication and erection of structural steel for a large factory, a church auditorium and hostel roofing, coordinating with design engineers on connection detailing, assembly sequencing and dimensional quality control.</li>
+  </ul>
+</div>
+<p class="small">Earlier: Industrial Engineering Trainee, Federal Capital Development Authority, Nigeria (2017–2018), sewage and roadway infrastructure; Engineering Intern, Kokun Integrated Services, Nigeria (2016–2017).</p>
+
+<h2>Education</h2>
+<div class="two">
+  <div class="entry"><div class="head"><b>MS, Data Science &amp; Engineering</b><span class="when">2025 – present</span></div><p class="meta">University of Maine</p></div>
+  <div class="entry"><div class="head"><b>MS, Structural Engineering</b><span class="when">2023 – 2025</span></div><p class="meta">University of Maine</p></div>
+  <div class="entry"><div class="head"><b>MSc, Project Management</b><span class="when">2023</span></div><p class="meta">University of Portsmouth, UK</p></div>
+  <div class="entry"><div class="head"><b>BEng, Civil Engineering</b><span class="when">2019</span></div><p class="meta">Federal University of Technology, Akure, Nigeria</p></div>
+</div>
+
+<h2>Skills</h2>
+<dl class="skills">
+  <dt>Tracking &amp; estimation</dt><dd>KF / EKF / UKF, particle and PHD filters, GNN, JPDA, MHT, Bernoulli existence, negative information, NEES/NIS; CLEAR-MOT, IDF1, HOTA, GOSPA</dd>
+  <dt>Vision &amp; deep learning</dt><dd>PyTorch, PyTorch3D, SAM 3, YOLOv8, Faster R-CNN, Vision Transformers, NeRF, appearance re-ID, Hugging Face</dd>
+  <dt>3-D &amp; sensors</dt><dd>Camera geometry, depth-buffer visibility, lidar point clouds (Open3D), FMCW radar DSP and CFAR, IMU/GNSS noise modelling</dd>
+  <dt>Robotics</dt><dd>ROS 2, colcon, costmap navigation, closed-loop planning and control (Frenet, LQR, PID)</dd>
+  <dt>Engineering</dt><dd>Python, C++, MATLAB, JavaScript / Three.js, SQL, Git, Docker, AWS, FastAPI</dd>
+</dl>
+
+<h2>Certifications</h2>
+<p>AWS Certified Machine Learning – Specialty · AWS Certified Solutions Architect – Associate · PyTorch Deep Learning Specialization (DeepLearning.AI)</p>
+</body>
+</html>
