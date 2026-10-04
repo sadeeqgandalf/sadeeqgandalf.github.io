@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sadeeq Adeyemi · Perception &amp; Tracking</title>
-<meta name="description" content="Robotics engineer working on perception and multi-object tracking under occlusion: estimation, sensor fusion and computer vision for space and autonomous systems.">
-<meta property="og:title" content="Sadeeq Adeyemi · Perception &amp; Tracking">
-<meta property="og:description" content="Keeping track of what a robot cannot see: occlusion-aware multi-object tracking, sensor fusion and estimation.">
-<meta property="og:image" content="img/occlusion-lab-3d.png">
+<title>Sadeeq Adeyemi · Computer Vision &amp; Perception Engineer</title>
+<meta name="description" content="Computer vision and perception engineer: multi-object tracking, sensor fusion and state estimation, with deep learning for robotics and autonomous systems.">
+<meta property="og:title" content="Sadeeq Adeyemi · Computer Vision &amp; Perception Engineer">
+<meta property="og:description" content="Perception for robots, from raw sensor signals to tracked objects to decisions. Multi-object tracking · sensor fusion · state estimation · deep learning for robotics and autonomous systems.">
+<meta property="og:image" content="https://sadeeqgandalf.github.io/img/occlusion-lab-3d.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
@@ -15,27 +15,34 @@
 @media (prefers-color-scheme:dark){:root{--bg:#121417;--fg:#e8e6e1;--muted:#9aa0ab;--line:#2a2e35;--card:#181b20;--accent:#8db4ec;--accent-soft:#1c2633}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-main,header,footer{max-width:880px;margin:0 auto;padding:0 20px}
+main,header,footer{max-width:920px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;line-height:1.2;margin:0}
 h1{font-size:clamp(2.1rem,5vw,2.9rem);letter-spacing:-.01em}
-h2{font-size:1.55rem;margin:0 0 1.2rem;padding-top:3.5rem}
-h3{font-size:1.2rem}
+h2{font-size:1.55rem;margin:0 0 .4rem;padding-top:3.5rem}
+h2+.sub{color:var(--muted);margin:0 0 1.3rem}
+h3{font-size:1.18rem}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 p{margin:.6rem 0}
 .muted{color:var(--muted)}
 nav{display:flex;gap:1.4rem;justify-content:flex-end;padding:1.2rem 0;font-size:.9rem}
 nav a{color:var(--muted)}
-.hero{padding:3.5rem 0 1rem}
-.role{font-size:1.1rem;color:var(--muted);margin:.5rem 0 1.4rem}
-.lede{font-size:1.15rem;max-width:42rem}
+.hero{padding:3rem 0 .5rem}
+.role{font:500 1.15rem/1.4 Inter,sans-serif;margin:.6rem 0 .5rem}
+.areas{display:flex;flex-wrap:wrap;gap:.3rem .9rem;color:var(--muted);font-size:.95rem;margin:0 0 1.5rem;padding:0;list-style:none}
+.areas li+li::before{content:"·";margin-right:.9rem;color:var(--line)}
+.lede{font-size:1.12rem;max-width:44rem}
 .links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
 .btn{border:1px solid var(--line);padding:.45rem .95rem;border-radius:6px;font-size:.9rem;color:var(--fg);background:var(--card)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 .btn:hover{text-decoration:none;border-color:var(--accent)}
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cap{border-top:2px solid var(--accent);padding-top:.7rem}
+.cap h3{font:600 .95rem Inter,sans-serif;margin-bottom:.25rem}
+.cap p{font-size:.88rem;color:var(--muted);margin:0}
 .feature{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .feature img{width:100%;display:block;border-bottom:1px solid var(--line)}
 .feature .body{padding:1.5rem 1.6rem 1.7rem}
-.kicker{font:500 .75rem/1 Inter,sans-serif;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);margin-bottom:.6rem}
+.kicker{font:500 .74rem/1.3 Inter,sans-serif;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);margin-bottom:.5rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.4rem 0}
 .stat{background:var(--accent-soft);border-radius:8px;padding:.9rem 1rem}
 .stat b{display:block;font:600 1.6rem/1.1 "Source Serif 4",serif}
@@ -45,31 +52,33 @@ th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--line)}
 th{font-weight:500;color:var(--muted)}td.n{font-variant-numeric:tabular-nums}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
-.card img{width:calc(100% + 2.8rem);margin:-1.3rem -1.4rem 1rem;border-bottom:1px solid var(--line);aspect-ratio:16/9;object-fit:cover;border-radius:10px 10px 0 0}
+.card .media{width:calc(100% + 2.8rem);margin:-1.3rem -1.4rem 1rem;border-bottom:1px solid var(--line);aspect-ratio:16/9;object-fit:cover;border-radius:10px 10px 0 0;display:block;background:#fff}
 .card p{font-size:.93rem}
 .card .result{font-size:.88rem;border-left:3px solid var(--accent);padding-left:.7rem;margin:.8rem 0}
 .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto;padding-top:.8rem}
 .tags span{font:400 .72rem JetBrains Mono,monospace;background:var(--accent-soft);color:var(--fg);padding:.15rem .45rem;border-radius:4px}
 .card .more{font-size:.88rem;margin-top:.8rem}
+.wip{font:500 .7rem Inter,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:.05rem .4rem;margin-left:.4rem;vertical-align:middle}
 ul.clean{padding-left:1.1rem;margin:.5rem 0}ul.clean li{margin:.3rem 0}
 .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 2rem}
 .skills h3{font:600 .9rem Inter,sans-serif;margin-bottom:.3rem}
 .skills p{font-size:.92rem;color:var(--muted);margin:0}
 footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem;font-size:.85rem;color:var(--muted)}
-@media (max-width:680px){.grid,.skills{grid-template-columns:1fr}.stats{grid-template-columns:1fr}nav{justify-content:flex-start;gap:1rem}}
+@media (max-width:720px){.grid,.skills,.caps{grid-template-columns:1fr}.stats{grid-template-columns:1fr}nav{justify-content:flex-start;gap:1rem}}
 </style>
 </head>
 <body>
 <header>
-  <nav><a href="#research">Research</a><a href="#projects">Projects</a><a href="#methods">Methods</a><a href="#contact">Contact</a></nav>
+  <nav><a href="#expertise">Expertise</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
   <section class="hero">
     <h1>Sadeeq Adeyemi</h1>
-    <p class="role">Robotics Engineer · Perception, Estimation &amp; Multi-Object Tracking</p>
-    <p class="lede">I work on one question: <strong>how does a robot keep track of what it cannot see?</strong> My projects study multi-object tracking under occlusion, from astronauts walking behind boulders on the Moon to pedestrians stepping out from behind a bus, with controlled, reproducible experiments and every claim backed by Monte Carlo statistics.</p>
+    <p class="role">Computer Vision &amp; Perception Engineer</p>
+    <ul class="areas"><li>Multi-Object Tracking</li><li>Sensor Fusion</li><li>State Estimation</li><li>Deep Learning for Robotics &amp; Autonomous Systems</li></ul>
+    <p class="lede">I build perception for robots, from raw sensor signals to tracked objects to decisions. Most of my work asks one hard question: <strong>how does a robot keep track of what it cannot see?</strong> I answer it with deep learning where it helps, probabilistic estimation where it is needed, and controlled experiments with Monte Carlo statistics behind every claim.</p>
     <div class="links">
       <a class="btn primary" href="#research">Featured research</a>
       <a class="btn" href="https://github.com/sadeeqgandalf">GitHub</a>
-      <!-- TODO: replace with your LinkedIn URL and a CV PDF in this folder -->
+      <!-- TODO: replace with your LinkedIn URL and add cv.pdf to this folder -->
       <a class="btn" href="https://www.linkedin.com/">LinkedIn</a>
       <a class="btn" href="cv.pdf">CV (PDF)</a>
     </div>
@@ -77,19 +86,33 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
 </header>
 
 <main>
+<section id="expertise">
+  <h2>Expertise</h2>
+  <p class="sub">Each area below is backed by a project on this page.</p>
+  <div class="caps">
+    <div class="cap"><h3>Computer Vision</h3><p>Detection (YOLOv8, Faster R-CNN), open-vocabulary segmentation (SAM 3), multi-object tracking and MOTS, re-identification, camera geometry.</p></div>
+    <div class="cap"><h3>Deep Learning</h3><p>PyTorch from scratch: Vision Transformers, NeRF, imbalanced classification; PyTorch3D differentiable rendering.</p></div>
+    <div class="cap"><h3>Machine Perception</h3><p>Occlusion and visibility reasoning, lidar point-cloud detection and moving-object segmentation, track existence.</p></div>
+    <div class="cap"><h3>Sensor Fusion</h3><p>KF / EKF / UKF, particle and PHD filters, GNN / JPDA / MHT association, camera + lidar + radar fusion, multi-view tracking.</p></div>
+    <div class="cap"><h3>Signal Processing</h3><p>FMCW radar from raw IF samples: range-Doppler, CFAR detection, angle estimation; Allan variance and sensor noise models.</p></div>
+    <div class="cap"><h3>Robotics &amp; Autonomy</h3><p>Closed-loop autonomy (perception → prediction → planning → control), rover and spacecraft navigation, visual-navigation foundation models.</p></div>
+  </div>
+</section>
+
 <section id="research">
   <h2>Featured research</h2>
+  <p class="sub">Computer vision · multi-object tracking · sensor fusion</p>
   <article class="feature">
-    <img src="img/occlusion-lab-3d.png" alt="3-D lunar boulder field with NASA astronaut models, the rover mast camera's rendered view and three trackers compared live">
+    <img src="img/occlusion-lab-3d.png" alt="3-D lunar boulder field with NASA astronaut models, the rover mast camera's rendered view and trackers compared live">
     <div class="body">
       <div class="kicker">Occlusion-aware multi-object tracking · Artemis lunar surface</div>
       <h3>Lunar Occlusion Tracking</h3>
-      <p>A rover mast camera tracks astronauts walking among boulders at the lunar south pole. When someone steps behind a rock or into a long polar shadow, does the tracker keep their identity, or call them a new person when they reappear?</p>
-      <p>I built a 3-D visibility model (line of sight to the body against half-buried boulders, plus cast shadows under a ~7° sun) and used it inside the tracker: a missed detection counts as evidence of absence only in proportion to the <em>expected</em> detection probability. Trackers then climb a ladder: occlusion awareness, negative information, appearance re-identification, a second camera, and lidar. Each step is measured on identical detections.</p>
+      <p>A rover's mast camera tracks astronauts walking among boulders at the lunar south pole. When someone steps behind a rock or into a long polar shadow, does the tracker keep their identity, or call them a new person when they reappear?</p>
+      <p>I modelled 3-D visibility (line of sight to the body against half-buried boulders, plus cast shadows under a low sun) and built it into the tracker: a missed detection counts as evidence of absence only in proportion to the <em>expected</em> detection probability. From there the trackers climb a ladder: occlusion awareness, negative information, learned appearance re-identification, a second camera, then lidar. Each step is measured on identical detections.</p>
       <div class="stats">
         <div class="stat"><b>0% → 89%</b><span>identities kept through 1–5 s occlusions (naive → full camera-only tracker)</span></div>
-        <div class="stat"><b>75.6 → 6.6</b><span>ID switches per 300 s run, boulder field (camera + lidar + lander camera)</span></div>
-        <div class="stat"><b>20 seeds</b><span>per configuration, with Wilson 95% intervals; results regenerate from one script</span></div>
+        <div class="stat"><b>75.6 → 6.6</b><span>ID switches per 300 s run (camera + lidar + second camera)</span></div>
+        <div class="stat"><b>20 seeds</b><span>per configuration with 95% intervals; one script regenerates every table</span></div>
       </div>
       <table>
         <thead><tr><th>Tracker (camera only, boulder field)</th><th>ID switches / run</th><th>IDF1</th></tr></thead>
@@ -100,39 +123,51 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
           <tr><td>+ appearance re-ID</td><td class="n">23.3</td><td class="n">0.540</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="font-size:.9rem">A finding I did not expect: adding sensors makes a naive tracker <em>worse</em> (75.6 → 254 switches), because every sensor that cannot see a person reports them as gone. More sensors only help a tracker that knows what each one can see. A second viewpoint helped more than a better sensor at the same spot.</p>
-      <p class="muted" style="font-size:.9rem">Implemented three times as cross-checks: a browser lab (JavaScript, Three.js, official NASA 3-D models), MATLAB (validated against MathWorks <code>trackerGNN</code>, <code>trackerJPDA</code>, <code>trackerTOMHT</code>), and a PyTorch3D pipeline with rendered camera detections.</p>
-      <div class="tags"><span>EKF</span><span>GNN / Hungarian</span><span>Bernoulli existence</span><span>PHD filter</span><span>re-ID</span><span>CLEAR-MOT · IDF1 · GOSPA</span><span>Three.js</span><span>MATLAB</span><span>PyTorch3D</span></div>
+      <p class="muted" style="font-size:.9rem">A sensor-fusion result I did not expect: adding sensors makes a naive tracker <em>worse</em> (75.6 → 254 switches), because every sensor that cannot see a person reports them as gone. More sensors only help a tracker that knows what each one can see, and a second viewpoint helped more than a better sensor at the same spot.</p>
+      <p class="muted" style="font-size:.9rem">Built three times as cross-checks: a real-time browser lab (Three.js, official NASA 3-D models), MATLAB (validated against MathWorks <code>trackerGNN</code>, <code>trackerJPDA</code>, <code>trackerTOMHT</code>) and PyTorch3D with rendered camera detections.</p>
+      <div class="tags"><span>multi-object tracking</span><span>re-ID</span><span>EKF</span><span>PHD filter</span><span>camera + lidar fusion</span><span>PyTorch3D</span><span>MATLAB</span><span>Three.js</span></div>
       <p class="more" style="margin-top:1.2rem"><a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking">Code, results and learning guide →</a></p>
     </div>
   </article>
 </section>
 
 <section id="projects">
-  <h2>Selected projects</h2>
+  <h2>Robotics &amp; autonomy</h2>
+  <p class="sub">Perception that drives real decisions in closed loop.</p>
   <div class="grid">
     <article class="card">
+      <video class="media" src="media/occluded_pedestrian.mp4" poster="" autoplay muted loop playsinline preload="metadata" aria-label="Replay: autonomous car slowing for a pedestrian hidden behind a bus"></video>
       <h3>Autonomous Driving Stack</h3>
-      <p>A full closed-loop stack in Python: EKF localization, open-vocabulary camera perception, LiDAR and radar fusion into a multi-object tracker, prediction, Frenet lattice planning, LQR/PID control and an independent safety monitor. The stack never sees simulator ground truth.</p>
-      <p class="result"><strong>100 / 100</strong> Monte Carlo runs pass (10 scenarios × 10 seeds, 0 collisions). With occlusion reasoning switched off, the occluded-pedestrian scenario collides in <strong>5 of 10</strong> runs.</p>
-      <div class="tags"><span>Python</span><span>sensor fusion</span><span>MOT</span><span>planning</span><span>control</span></div>
+      <p>A full closed-loop stack in Python: EKF localization, open-vocabulary camera perception, lidar and radar fusion into a multi-object tracker, prediction, Frenet lattice planning, LQR/PID control and an independent safety monitor. It never sees simulator ground truth.</p>
+      <p class="result"><strong>100 / 100</strong> Monte Carlo runs pass (10 scenarios × 10 seeds, 0 collisions). With occlusion reasoning off, a pedestrian stepping out from behind a bus is hit in <strong>5 of 10</strong> runs.</p>
+      <div class="tags"><span>Python</span><span>sensor fusion</span><span>tracking</span><span>planning</span><span>control</span></div>
     </article>
     <article class="card">
-      <img src="img/radar-scene.png" alt="Simulated FMCW radar scene with detections">
-      <h3>Sensor Fusion from Raw Signals</h3>
-      <p>A MATLAB study of AV perception from the signal level up: sensor noise modelling (Allan variance, GNSS error), FMCW radar processing from raw IF samples to range-Doppler maps, CFAR detection and calibrated detections. Algorithms are written from scratch and cross-validated against MathWorks toolboxes.</p>
-      <div class="tags"><span>MATLAB</span><span>FMCW radar</span><span>CFAR</span><span>Kalman filters</span></div>
-    </article>
-    <article class="card">
-      <img src="img/mission-control-3d.png" alt="NASA Perseverance on Mars terrain with each estimator's belief and uncertainty disc">
+      <img class="media" src="img/mission-control-3d.png" alt="NASA Perseverance on Mars terrain with each estimator's belief and uncertainty disc">
       <h3>Navigation Filters under Faults</h3>
-      <p>An interactive lab where a Mars rover, a fighter jet or a spacecraft docking with NASA's Gateway is navigated by dead reckoning, EKF, UKF and a particle filter on the same sensor stream, under injected faults. Filters follow <em>Probabilistic Robotics</em>; every analytic Jacobian is checked numerically.</p>
+      <p>A Mars rover, a fighter jet and a spacecraft docking with NASA's Gateway, each navigated by dead reckoning, EKF, UKF and a particle filter on the same sensor stream under injected faults, with an onboard health monitor. Every analytic Jacobian is checked numerically.</p>
       <div class="tags"><span>EKF</span><span>UKF</span><span>particle filter</span><span>NEES / NIS</span></div>
       <p class="more"><a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking">Code →</a></p>
     </article>
     <article class="card">
+      <h3>Visual Navigation on a Real Rover <span class="wip">in progress</span></h3>
+      <p>Bringing visual-navigation foundation models (GNM, ViNT, NoMaD) onto a FrodoBots Earth Rover through its SDK: camera in, waypoints out, on a physical outdoor robot.</p>
+      <div class="tags"><span>embodied AI</span><span>visual navigation</span><span>transformers</span><span>robot SDK</span></div>
+    </article>
+    <article class="card">
+      <img class="media" src="img/lidar-boxes.png" alt="Bird's-eye lidar scan with 17 oriented bounding boxes" style="object-fit:contain">
+      <h3>Lidar Perception on Argoverse 2</h3>
+      <p>Classical point-cloud perception on real Argoverse 2 sweeps: ground removal, DBSCAN clustering, oriented boxes from PCA heading, and moving-object segmentation from ego-motion-compensated scene flow, graded against ground truth.</p>
+      <div class="tags"><span>lidar</span><span>Open3D</span><span>SE(3)</span><span>scene flow</span></div>
+    </article>
+  </div>
+
+  <h2>Computer vision &amp; deep learning</h2>
+  <p class="sub">Models built and evaluated end to end.</p>
+  <div class="grid">
+    <article class="card">
       <h3>Open-Vocabulary Segmentation &amp; Tracking</h3>
-      <p>Text-prompted segmentation and tracking (MOTS) on KITTI and BDD100K driving video with Meta's SAM 3, merging per-prompt masklets into one global identity space, evaluated with TrackEval (HOTA).</p>
+      <p>Text-prompted segmentation and tracking (MOTS) on KITTI and BDD100K driving video with Meta's SAM 3, merging per-prompt masklets into one identity space, evaluated with TrackEval (HOTA).</p>
       <div class="tags"><span>SAM 3</span><span>MOTS</span><span>KITTI</span><span>BDD100K</span><span>HOTA</span></div>
       <p class="more"><a href="https://github.com/sadeeqgandalf/ComputerVision_Research">Code →</a></p>
     </article>
@@ -143,10 +178,32 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
       <p class="more"><a href="https://github.com/sadeeqgandalf/av-perception-pipeline">Code →</a></p>
     </article>
     <article class="card">
-      <h3>NeRF 3-D Reconstruction</h3>
-      <p>A from-scratch PyTorch reimplementation of Neural Radiance Fields (Mildenhall et al., 2020): ray generation, positional encoding, hierarchical sampling and volume rendering. Work in progress, 22 tests.</p>
+      <h3>Vision Transformer for Skin-Lesion Classification</h3>
+      <p>A Vision Transformer written from scratch in PyTorch, compared with a pretrained ViT on 7-class dermoscopy (HAM10000), with class-weighted loss for imbalance, warm-up scheduling, per-class AUC and attention-map visualisation.</p>
+      <div class="tags"><span>PyTorch</span><span>ViT</span><span>medical imaging</span><span>interpretability</span></div>
+    </article>
+    <article class="card">
+      <h3>NeRF 3-D Reconstruction <span class="wip">in progress</span></h3>
+      <p>A from-scratch PyTorch reimplementation of Neural Radiance Fields (Mildenhall et al., 2020): ray generation, positional encoding, hierarchical sampling and volume rendering. 22 tests.</p>
       <div class="tags"><span>PyTorch</span><span>NeRF</span><span>3-D vision</span></div>
       <p class="more"><a href="https://github.com/sadeeqgandalf/Nerf-3D-Reconstruction">Code →</a></p>
+    </article>
+  </div>
+
+  <h2>Signal processing &amp; machine learning</h2>
+  <p class="sub">From raw signals to production-style models.</p>
+  <div class="grid">
+    <article class="card">
+      <img class="media" src="img/radar-scene.png" alt="Simulated FMCW radar scene with detections">
+      <h3>Sensor Fusion from Raw Signals</h3>
+      <p>A MATLAB study of AV perception from the signal level up: sensor noise modelling (Allan variance, GNSS error) and FMCW radar processing from raw IF samples to range-Doppler maps, CFAR detection and calibrated detections, written from scratch and cross-validated against MathWorks toolboxes.</p>
+      <div class="tags"><span>MATLAB</span><span>FMCW radar</span><span>CFAR</span><span>DSP</span></div>
+    </article>
+    <article class="card">
+      <h3>Fraud Detection Pipeline</h3>
+      <p>A PyTorch classifier for financial transactions: feature engineering, class imbalance handled with SMOTE and weighted loss, early stopping, ROC/PR threshold search and a simple inference API.</p>
+      <div class="tags"><span>PyTorch</span><span>imbalanced learning</span><span>MLOps basics</span></div>
+      <p class="more"><a href="https://github.com/sadeeqgandalf/Advanced-fraud-detection-wPYTORCH">Code →</a></p>
     </article>
   </div>
 </section>
@@ -161,16 +218,16 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <li><strong>Honest about limits.</strong> Each project states what it does not claim, and what failed on the way.</li>
   </ul>
   <div class="skills" style="margin-top:1.8rem">
-    <div><h3>Estimation &amp; tracking</h3><p>KF / EKF / UKF, particle filters, IMM, GNN, JPDA, MHT, PHD, track existence, CLEAR-MOT, IDF1, HOTA, GOSPA</p></div>
-    <div><h3>Perception</h3><p>Detection (YOLO, Faster R-CNN), segmentation (SAM 3), re-identification, radar DSP, lidar, multi-sensor fusion</p></div>
-    <div><h3>3-D vision</h3><p>Camera geometry, depth-buffer visibility, PyTorch3D, NeRF</p></div>
-    <div><h3>Tools</h3><p>Python, PyTorch, MATLAB, JavaScript / Three.js, OpenCV, C++, Git</p></div>
+    <div><h3>Languages</h3><p>Python, MATLAB, C++, JavaScript</p></div>
+    <div><h3>Deep learning</h3><p>PyTorch, PyTorch3D, Ultralytics YOLO, SAM 3, torchvision</p></div>
+    <div><h3>Vision &amp; 3-D</h3><p>OpenCV, Open3D, Three.js / WebGL, Rerun</p></div>
+    <div><h3>Estimation &amp; evaluation</h3><p>MathWorks Sensor Fusion &amp; Tracking, TrackEval, CLEAR-MOT, IDF1, HOTA, GOSPA</p></div>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>I am looking for roles and research collaborations in perception, tracking and autonomy for space and robotic systems. I am happy to walk through any of this work.</p>
+  <p>I am looking for computer vision, perception and robotics roles, and research collaborations in machine perception for autonomous and space systems. I am happy to walk through any of this work.</p>
   <div class="links">
     <!-- TODO: replace with your professional email and LinkedIn URL -->
     <a class="btn primary" href="mailto:you@example.com">Email</a>
