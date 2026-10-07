@@ -1,0 +1,119 @@
+% Sadeeq Adeyemi - CV. One US Letter page, single column, ATS-friendly (plain text, standard headings, no tables/icons).
+% Build: tectonic Sadeeq_Adeyemi_CV.tex   (or XeLaTeX / pdfLaTeX on Overleaf)
+\documentclass[10pt,letterpaper]{article}
+\usepackage[letterpaper,top=0.42in,bottom=0.42in,left=0.52in,right=0.52in]{geometry}
+\usepackage{iftex}
+% Latin Modern Sans on every engine: clean, compact, and its text extracts correctly for applicant-tracking systems
+\ifPDFTeX
+  \usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+  \input{glyphtounicode}\pdfgentounicode=1
+\else
+  \usepackage{fontspec}
+\fi
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{enumitem,titlesec,xcolor}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}
+\linespread{1.0}
+\definecolor{ink}{HTML}{111827}\definecolor{rule}{HTML}{6B7280}
+\color{ink}
+
+% ---- section heading: bold caps with a rule
+\titleformat{\section}{\bfseries\fontsize{10.6}{12}\selectfont}{}{0pt}{\MakeUppercase}[{\color{rule}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{8.2pt}{4.4pt}
+
+% ---- entry line: bold title, organisation, right-aligned date
+\newcommand{\entry}[3]{\vspace{3.0pt}\textbf{#1}\ifx&#2&\else\enspace\textbar\enspace #2\fi\hfill #3\par\vspace{1pt}}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.9pt,topsep=1pt,parsep=0pt,partopsep=0pt,label=\textbullet}
+\newcommand{\skill}[2]{\textbf{#1:} #2\par\vspace{1.4pt}}
+\newcommand{\AV}{\mbox{A}\mbox{V}}
+\newcommand{\AWS}{\mbox{A}\mbox{W}\mbox{S}}   % no kerning between the letters, so text extraction reads AWS, not A WS
+
+\begin{document}
+\fontsize{9.7}{11.75}\selectfont
+
+% ================= HEADER
+\begin{center}
+  {\fontsize{21}{24}\selectfont\bfseries Sadeeq Adeyemi}\par\vspace{3.5pt}
+  {\fontsize{11}{13}\selectfont\bfseries Computer Vision and Perception Engineer}\par\vspace{3pt}
+  Bangor, Maine \enspace\textbar\enspace \href{mailto:sideeqadeyemi@icloud.com}{sideeqadeyemi@icloud.com}\par\vspace{1.5pt}
+  % For applications that ask for a phone number, add after the email:  \enspace\textbar\enspace (000) 000-0000
+  \href{https://sadeeqgandalf.github.io}{sadeeqgandalf.github.io} \enspace\textbar\enspace
+  \href{https://github.com/sadeeqgandalf}{github.com/sadeeqgandalf} \enspace\textbar\enspace
+  \href{https://www.linkedin.com/in/sadeeq-a-a90bb425a}{linkedin.com/in/sadeeq-a-a90bb425a}
+\end{center}
+\vspace{-3pt}
+
+% ================= SUMMARY
+\section{Professional Summary}
+Perception engineer focused on multi-object tracking through occlusion for robots and autonomous vehicles. Builds
+trackers that fuse camera, lidar, radar and event-camera data, and backs every claim with multi-seed ablations and
+public, reproducible code. Raised identity retention through occlusions from 0\% to 89\% in simulation, then built the
+tooling to test the same question on 1,256 real NVIDIA driving clips. Works fluently with AI coding agents.
+
+% ================= SKILLS
+\section{Technical Skills}
+\skill{Tracking and Estimation}{MOT/MOTS, sensor fusion, occlusion reasoning, re-ID, EKF/UKF, particle and PHD filters, JPDA, MHT}
+\skill{Deep Learning and Vision}{PyTorch, PyTorch3D, SAM 3, YOLOv8, Vision Transformers, NeRF, segmentation, OpenCV, Open3D}
+\skill{Sensors and Datasets}{Camera, lidar, FMCW radar, event cameras; NVIDIA PhysicalAI-\AV, KITTI, BDD100K, Argoverse 2}
+\skill{Robotics and Software}{ROS 2, Python, C++17, MATLAB, JavaScript, Git, Docker, \AWS; HOTA, IDF1, CLEAR-MOT, GOSPA}
+\skill{AI Agents}{Agentic development with Claude Code: multi-step coding and research workflows gated by automated tests}
+
+% ================= RESEARCH AND PROJECTS
+\section{Research and Projects}
+\entry{Occlusion-Aware Multi-Object Tracking}{\href{https://github.com/sadeeqgandalf/lunar-occlusion-tracking}{github.com/sadeeqgandalf/lunar-occlusion-tracking}}{2026}
+\begin{itemize}
+  \item Designed a tracker (EKF, Hungarian assignment, Bernoulli existence) that derives detection probability from 3-D line of sight and cast shadows, with a negative-information update for missed detections.
+  \item Raised identities kept through 1--5 s occlusions from 0\% to 46\%, and to 89\% with appearance re-ID (20 seeds, 95\% intervals).
+  \item Cut ID switches per run from 75.6 to 6.6 by fusing camera, lidar and a second viewpoint; showed that naive fusion raises them 3.4x.
+  \item Cross-checked against MathWorks GNN, JIPDA and TOMHT; Python and MATLAB ports reproduce the JavaScript engine exactly.
+  \item Rendered camera detections with PyTorch3D; appearance re-ID lifts identities kept after hides over 5 s from 8\% to 50\%.
+  \item Shipped a live 3-D browser lab backed by 46 automated tests: \href{https://sadeeqgandalf.github.io/lunar-occlusion-tracking/track.html}{sadeeqgandalf.github.io/lunar-occlusion-tracking}
+  \item Added lidar instance segmentation (0.94 mask IoU) and an event-camera sensor model fitted to real recordings (correlation 0.97).
+\end{itemize}
+
+\entry{Occlusion Mining on Real Driving Data}{NVIDIA PhysicalAI Autonomous Vehicles dataset}{2026}
+\begin{itemize}
+  \item Mined 10,871 pedestrian occlusion events from 1,256 clips (9.6 million 3-D boxes) with a ray-cast line-of-sight test.
+  \item Implemented fisheye (f-theta) projection and per-point lidar motion compensation; confirmed camera-lidar timing to about 10 ms.
+  \item Built a lidar depth-buffer visibility referee and 3-D review videos showing point clouds, blind zones, tracks and hide timers.
+\end{itemize}
+
+\entry{Closed-Loop Autonomous Driving Stack}{}{2026}
+\begin{itemize}
+  \item Integrated EKF localization, SAM 3 perception lifted to 3-D with lidar and radar, tracking, Frenet planning and LQR/PID control.
+  \item Passed 100 of 100 Monte Carlo runs with no simulator ground truth; with occlusion reasoning off, 5 of 10 runs strike a pedestrian.
+\end{itemize}
+
+\entry{Additional Perception Work}{}{2025 -- 2026}
+\begin{itemize}
+  \item Open-vocabulary MOTS with SAM 3 on KITTI and BDD100K (HOTA); lidar moving-object segmentation on Argoverse 2.
+  \item FMCW radar pipeline in MATLAB from raw IF samples to CFAR detections, checked against the CRLB; ViT and NeRF in PyTorch.
+\end{itemize}
+
+% ================= EXPERIENCE
+\section{Experience}
+\entry{Robotics Research Assistant}{University of Maine Robotics Laboratory}{2025 -- Present}
+\begin{itemize}
+  \item Build mobile robot platforms end to end: sensor integration, wiring, ROS 2 nodes and point-cloud perception pipelines.
+  \item Implemented EKF localization fusing IMU, wheel odometry and lidar, with costmap planning and obstacle avoidance.
+\end{itemize}
+
+\entry{Machine Learning Engineer and Structural Steel Fabricator}{NewTech Steel, Nigeria}{2018 -- 2023}
+\begin{itemize}
+  \item Deployed a computer vision model for real-time fatigue and defect detection in steel; automated testing cut test time by 50\%.
+  \item Led structural steel fabrication and erection for factory and auditorium projects.
+\end{itemize}
+
+\entry{Materials Engineer (CPT)}{R.W. Gillespie, Maine: materials testing to ASTM standards}{2024}
+
+% ================= EDUCATION
+\section{Education and Certifications}
+\entry{MS, Data Science and Engineering}{University of Maine}{2025 -- Present}
+\entry{MS, Structural Engineering}{University of Maine}{2023 -- 2025}
+\entry{MSc, Project Management}{University of Portsmouth, United Kingdom}{2023}
+\entry{BEng, Civil Engineering}{Federal University of Technology Akure, Nigeria}{2019}
+\entry{Certifications}{\AWS{} Certified Machine Learning -- Specialty; \AWS{} Certified Solutions Architect -- Associate}{}
+
+\end{document}

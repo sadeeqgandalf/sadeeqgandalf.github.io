@@ -1,0 +1,6 @@
+# private application materials: not for the public site
+cv/Sadeeq_Adeyemi_Cover_Letter.*
+cv/application_kit.md
+*.log
+*.aux
+*.out
