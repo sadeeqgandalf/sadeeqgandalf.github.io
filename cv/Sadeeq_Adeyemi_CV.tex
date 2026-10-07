@@ -1,9 +1,28 @@
-% Sadeeq Adeyemi - CV. One US Letter page, single column, ATS-friendly (plain text, standard headings, no tables/icons).
-% Build: tectonic Sadeeq_Adeyemi_CV.tex   (or XeLaTeX / pdfLaTeX on Overleaf)
+% =====================================================================================
+%  Sadeeq Adeyemi, CV.  One US Letter page, single column, plain text for ATS.
+%  Build:  tectonic Sadeeq_Adeyemi_CV.tex      (or XeLaTeX / pdfLaTeX on Overleaf)
+%
+%  TAILORING FOR A JOB (5 minutes). Search this file for "EDIT" to find each spot.
+%    EDIT 1  Role line      Use the posting's own title.
+%    EDIT 2  Summary        Swap the domain words for the posting's (robots, vehicles, drones).
+%    EDIT 3  Skills         Reorder so the posting's must-haves come first in each row.
+%                           Add a skill only if you can discuss it in an interview.
+%    EDIT 4  Project order  Put the closest project first. Each project is one block
+%                           between two comment rules, so cut and paste the whole block.
+%
+%  KEEPING IT TO ONE PAGE
+%    One bullet = one line in this file = one line on the page (about 125 characters).
+%    A bullet that wraps by one word costs a whole line, so trim the word.
+%    If the page still spills, lower \BodySize by 0.1. If it has spare room, raise \Gap.
+% =====================================================================================
 \documentclass[10pt,letterpaper]{article}
 \usepackage[letterpaper,top=0.42in,bottom=0.42in,left=0.52in,right=0.52in]{geometry}
+
+\newcommand{\BodySize}{9.6}     % body text size in points
+\newcommand{\Gap}{7.6pt}        % space above each section heading
+
+% ---- fonts: Latin Modern Sans on every engine; its text extracts cleanly for ATS
 \usepackage{iftex}
-% Latin Modern Sans on every engine: clean, compact, and its text extracts correctly for applicant-tracking systems
 \ifPDFTeX
   \usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
   \input{glyphtounicode}\pdfgentounicode=1
@@ -15,105 +34,122 @@
 \usepackage[hidelinks]{hyperref}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}\setlength{\parskip}{0pt}
-\linespread{1.0}
 \definecolor{ink}{HTML}{111827}\definecolor{rule}{HTML}{6B7280}
 \color{ink}
 
-% ---- section heading: bold caps with a rule
+% ---- building blocks
 \titleformat{\section}{\bfseries\fontsize{10.6}{12}\selectfont}{}{0pt}{\MakeUppercase}[{\color{rule}\titlerule[0.6pt]}]
-\titlespacing*{\section}{0pt}{8.2pt}{4.4pt}
-
-% ---- entry line: bold title, organisation, right-aligned date
-\newcommand{\entry}[3]{\vspace{3.0pt}\textbf{#1}\ifx&#2&\else\enspace\textbar\enspace #2\fi\hfill #3\par\vspace{1pt}}
+\titlespacing*{\section}{0pt}{\Gap}{4.2pt}
 \setlist[itemize]{leftmargin=1.15em,itemsep=0.9pt,topsep=1pt,parsep=0pt,partopsep=0pt,label=\textbullet}
+% \role{Title}{Organisation}{Dates}   and   \project{Title}{Dates}
+\newcommand{\role}[3]{\vspace{2.8pt}\textbf{#1,} #2\hfill #3\par\vspace{1pt}}
+\newcommand{\project}[2]{\vspace{2.8pt}\textbf{#1}\hfill #2\par\vspace{1pt}}
 \newcommand{\skill}[2]{\textbf{#1:} #2\par\vspace{1.4pt}}
+\newcommand{\key}[1]{\textbf{#1}}          % the one number a recruiter should see in a bullet
+\newcommand{\sep}{\enspace\textbar\enspace}
+% Letter pairs that kern tightly are read by some text extractors as "A V" and "A WS". These keep them whole.
 \newcommand{\AV}{\mbox{A}\mbox{V}}
-\newcommand{\AWS}{\mbox{A}\mbox{W}\mbox{S}}   % no kerning between the letters, so text extraction reads AWS, not A WS
+\newcommand{\AWS}{\mbox{A}\mbox{W}\mbox{S}}
 
 \begin{document}
-\fontsize{9.7}{11.75}\selectfont
+\fontsize{\BodySize}{11.6}\selectfont
 
-% ================= HEADER
+% ===================================================================================== HEADER
 \begin{center}
   {\fontsize{21}{24}\selectfont\bfseries Sadeeq Adeyemi}\par\vspace{3.5pt}
-  {\fontsize{11}{13}\selectfont\bfseries Computer Vision and Perception Engineer}\par\vspace{3pt}
-  Bangor, Maine \enspace\textbar\enspace \href{mailto:sideeqadeyemi@icloud.com}{sideeqadeyemi@icloud.com}\par\vspace{1.5pt}
-  % For applications that ask for a phone number, add after the email:  \enspace\textbar\enspace (000) 000-0000
-  \href{https://sadeeqgandalf.github.io}{sadeeqgandalf.github.io} \enspace\textbar\enspace
-  \href{https://github.com/sadeeqgandalf}{github.com/sadeeqgandalf} \enspace\textbar\enspace
+  % EDIT 1: role line. Alternatives:
+  %   Robotics Perception Engineer, Sensor Fusion and State Estimation
+  %   Computer Vision Engineer, 3D Perception and Tracking
+  %   Research Engineer, Perception and Multi-Object Tracking
+  {\fontsize{11}{13}\selectfont\bfseries Perception Engineer, Multi-Object Tracking and Sensor Fusion}\par\vspace{3pt}
+  % Add a phone number after the email when an application asks for one:  \sep (000) 000-0000
+  Atlanta, Georgia \sep \href{mailto:sideeqadeyemi@icloud.com}{sideeqadeyemi@icloud.com} \sep Open to relocation in the US and Canada\par\vspace{1.5pt}
+  \href{https://sadeeqgandalf.github.io}{sadeeqgandalf.github.io} \sep
+  \href{https://github.com/sadeeqgandalf}{github.com/sadeeqgandalf} \sep
   \href{https://www.linkedin.com/in/sadeeq-a-a90bb425a}{linkedin.com/in/sadeeq-a-a90bb425a}
 \end{center}
 \vspace{-3pt}
 
-% ================= SUMMARY
-\section{Professional Summary}
-Perception engineer focused on multi-object tracking through occlusion for robots and autonomous vehicles. Builds
-trackers that fuse camera, lidar, radar and event-camera data, and backs every claim with multi-seed ablations and
-public, reproducible code. Raised identity retention through occlusions from 0\% to 89\% in simulation, then built the
-tooling to test the same question on 1,256 real NVIDIA driving clips. Works fluently with AI coding agents.
+% ===================================================================================== SUMMARY
+\section{Summary}
+% EDIT 2
+Perception engineer who builds and measures multi-object tracking and sensor fusion for autonomous vehicles and robots.
+Works in Python, C++ and PyTorch across camera, lidar and radar, combining Kalman filtering and data association with deep
+learning for detection and segmentation. Raised identity retention through occlusion from \key{0\% to 89\%} in simulation, then
+mined \key{10,871 occlusion events} from 1,256 real NVIDIA driving clips. Writes tested, reproducible code and works daily
+with AI coding agents.
 
-% ================= SKILLS
-\section{Technical Skills}
-\skill{Tracking and Estimation}{MOT/MOTS, sensor fusion, occlusion reasoning, re-ID, EKF/UKF, particle and PHD filters, JPDA, MHT}
-\skill{Deep Learning and Vision}{PyTorch, PyTorch3D, SAM 3, YOLOv8, Vision Transformers, NeRF, segmentation, OpenCV, Open3D}
-\skill{Sensors and Datasets}{Camera, lidar, FMCW radar, event cameras; NVIDIA PhysicalAI-\AV, KITTI, BDD100K, Argoverse 2}
-\skill{Robotics and Software}{ROS 2, Python, C++17, MATLAB, JavaScript, Git, Docker, \AWS; HOTA, IDF1, CLEAR-MOT, GOSPA}
-\skill{AI Agents}{Agentic development with Claude Code: multi-step coding and research workflows gated by automated tests}
+% ===================================================================================== SKILLS
+\section{Skills}
+% EDIT 3. The first row is what you use every day. Keep it to what you can code in an interview.
+\skill{Core stack}{\textbf{Python, C++, PyTorch, ROS 2, OpenCV, NumPy, Git, Docker}}
+\skill{Tracking and fusion}{multi-object tracking, sensor fusion, EKF and UKF state estimation, JPDA and MHT data association}
+\skill{Perception}{computer vision, deep learning, 3D object detection and tracking, instance segmentation, re-identification, SAM 3, YOLOv8}
+\skill{Sensors and data}{camera, lidar point clouds, radar, event cameras, NVIDIA PhysicalAI-\AV, KITTI, BDD100K, Argoverse 2}
+\skill{Practice}{Monte Carlo evaluation, MOTA and IDF1 metrics, automated testing, MATLAB, \AWS, AI coding agents with Claude Code}
 
-% ================= RESEARCH AND PROJECTS
-\section{Research and Projects}
-\entry{Occlusion-Aware Multi-Object Tracking}{\href{https://github.com/sadeeqgandalf/lunar-occlusion-tracking}{github.com/sadeeqgandalf/lunar-occlusion-tracking}}{2026}
-\begin{itemize}
-  \item Designed a tracker (EKF, Hungarian assignment, Bernoulli existence) that derives detection probability from 3-D line of sight and cast shadows, with a negative-information update for missed detections.
-  \item Raised identities kept through 1--5 s occlusions from 0\% to 46\%, and to 89\% with appearance re-ID (20 seeds, 95\% intervals).
-  \item Cut ID switches per run from 75.6 to 6.6 by fusing camera, lidar and a second viewpoint; showed that naive fusion raises them 3.4x.
-  \item Cross-checked against MathWorks GNN, JIPDA and TOMHT; Python and MATLAB ports reproduce the JavaScript engine exactly.
-  \item Rendered camera detections with PyTorch3D; appearance re-ID lifts identities kept after hides over 5 s from 8\% to 50\%.
-  \item Shipped a live 3-D browser lab backed by 46 automated tests: \href{https://sadeeqgandalf.github.io/lunar-occlusion-tracking/track.html}{sadeeqgandalf.github.io/lunar-occlusion-tracking}
-  \item Added lidar instance segmentation (0.94 mask IoU) and an event-camera sensor model fitted to real recordings (correlation 0.97).
-\end{itemize}
-
-\entry{Occlusion Mining on Real Driving Data}{NVIDIA PhysicalAI Autonomous Vehicles dataset}{2026}
-\begin{itemize}
-  \item Mined 10,871 pedestrian occlusion events from 1,256 clips (9.6 million 3-D boxes) with a ray-cast line-of-sight test.
-  \item Implemented fisheye (f-theta) projection and per-point lidar motion compensation; confirmed camera-lidar timing to about 10 ms.
-  \item Built a lidar depth-buffer visibility referee and 3-D review videos showing point clouds, blind zones, tracks and hide timers.
-\end{itemize}
-
-\entry{Closed-Loop Autonomous Driving Stack}{}{2026}
-\begin{itemize}
-  \item Integrated EKF localization, SAM 3 perception lifted to 3-D with lidar and radar, tracking, Frenet planning and LQR/PID control.
-  \item Passed 100 of 100 Monte Carlo runs with no simulator ground truth; with occlusion reasoning off, 5 of 10 runs strike a pedestrian.
-\end{itemize}
-
-\entry{Additional Perception Work}{}{2025 -- 2026}
-\begin{itemize}
-  \item Open-vocabulary MOTS with SAM 3 on KITTI and BDD100K (HOTA); lidar moving-object segmentation on Argoverse 2.
-  \item FMCW radar pipeline in MATLAB from raw IF samples to CFAR detections, checked against the CRLB; ViT and NeRF in PyTorch.
-\end{itemize}
-
-% ================= EXPERIENCE
+% ===================================================================================== EXPERIENCE
 \section{Experience}
-\entry{Robotics Research Assistant}{University of Maine Robotics Laboratory}{2025 -- Present}
+\role{Robotics Research Assistant}{University of Maine Robotics Laboratory}{2025 - Present}
 \begin{itemize}
-  \item Build mobile robot platforms end to end: sensor integration, wiring, ROS 2 nodes and point-cloud perception pipelines.
-  \item Implemented EKF localization fusing IMU, wheel odometry and lidar, with costmap planning and obstacle avoidance.
+  \item Build mobile robot platforms end to end, from sensor integration and wiring to ROS 2 nodes and point cloud perception.
+  \item Implemented EKF localization that fuses IMU, wheel odometry and lidar, with costmap planning and obstacle avoidance.
 \end{itemize}
 
-\entry{Machine Learning Engineer and Structural Steel Fabricator}{NewTech Steel, Nigeria}{2018 -- 2023}
+\role{Materials Engineer}{R.W. Gillespie, Maine. Tested construction materials to ASTM standards.}{2024}
+
+\role{Machine Learning Engineer and Structural Steel Fabricator}{NewTech Steel, Nigeria}{2018 - 2023}
 \begin{itemize}
-  \item Deployed a computer vision model for real-time fatigue and defect detection in steel; automated testing cut test time by 50\%.
+  \item Deployed a computer vision model for real-time fatigue and defect detection in steel, and cut test time by \key{50\%} through automation.
   \item Led structural steel fabrication and erection for factory and auditorium projects.
 \end{itemize}
 
-\entry{Materials Engineer (CPT)}{R.W. Gillespie, Maine: materials testing to ASTM standards}{2024}
+% ===================================================================================== PROJECTS
+\section{Projects}
+% EDIT 4: move whole blocks to put the closest project first.
 
-% ================= EDUCATION
-\section{Education and Certifications}
-\entry{MS, Data Science and Engineering}{University of Maine}{2025 -- Present}
-\entry{MS, Structural Engineering}{University of Maine}{2023 -- 2025}
-\entry{MSc, Project Management}{University of Portsmouth, United Kingdom}{2023}
-\entry{BEng, Civil Engineering}{Federal University of Technology Akure, Nigeria}{2019}
-\entry{Certifications}{\AWS{} Certified Machine Learning -- Specialty; \AWS{} Certified Solutions Architect -- Associate}{}
+% ------------------------------------------------------------------------------------- tracking
+\project{Occlusion-Aware Multi-Object Tracking}{2026}
+\begin{itemize}
+  \item Built a tracker with EKF state estimation and Hungarian data association that models when each target is hidden from the sensor.
+  \item Kept the correct identity through 1 to 5 second occlusions in \key{89\% of cases, up from 0\%}, across 20 Monte Carlo seeds in simulation.
+  \item Cut identity switches per run from \key{75.6 to 6.6} by fusing camera, lidar and a second camera viewpoint.
+  \item Validated against MathWorks GNN, JPDA and TOMHT trackers. Python, MATLAB and JavaScript implementations agree exactly.
+  \item Runs in real time at \key{1.6 ms per frame}. Ported the companion navigation EKF to C++17 at 0.1 microseconds per step.
+  \item Extended it with appearance re-identification, lidar instance segmentation at 0.94 mask IoU and an event camera model.
+  \item Shipped a live 3D browser lab with 46 automated tests. Code at \href{https://github.com/sadeeqgandalf/lunar-occlusion-tracking}{github.com/sadeeqgandalf/lunar-occlusion-tracking}
+\end{itemize}
+
+% ------------------------------------------------------------------------------------- real driving data
+\project{Occlusion Mining on Real Driving Data, NVIDIA PhysicalAI-\AV{} Dataset}{2026}
+\begin{itemize}
+  \item Mined \key{10,871 pedestrian occlusion events} from 1,256 driving clips and 9.6 million 3D boxes with a ray-cast line-of-sight test.
+  \item Projected lidar into the fisheye camera from calibration data, corrected motion distortion and verified time synchronization to 10 ms.
+  \item Built a lidar depth-buffer visibility check and 3D review tooling for point clouds, blind zones and tracks.
+  \item Pulled single clips from a 133 TB dataset with HTTP range requests, cutting each download from 2 GB to 10 MB.
+\end{itemize}
+
+% ------------------------------------------------------------------------------------- driving stack
+\project{Closed-Loop Autonomous Driving Stack}{2026}
+\begin{itemize}
+  \item Integrated EKF localization, open-vocabulary perception across camera, lidar and radar, tracking, planning and LQR control.
+  \item Passed \key{100 of 100} Monte Carlo runs with zero collisions. Without occlusion reasoning, 5 of 10 hidden-pedestrian runs collide.
+\end{itemize}
+
+% ------------------------------------------------------------------------------------- other
+\project{Additional Perception Work}{2025 - 2026}
+\begin{itemize}
+  \item Ran SAM 3 text-prompted segmentation and tracking on KITTI and BDD100K, and patched it to run on CPU and Apple Silicon.
+  \item Built a dashcam pipeline with YOLOv8 detection, tracking, lane detection and time to collision, covered by 24 regression tests.
+  \item Built an FMCW radar chain in MATLAB from raw samples to CFAR detections, checked against the Cramer-Rao bound.
+\end{itemize}
+
+% ===================================================================================== EDUCATION
+\section{Education}
+\role{MS, Data Science and Engineering}{University of Maine}{2025 - Present}
+\role{MS, Structural Engineering}{University of Maine}{2023 - 2025}
+\role{MSc, Project Management}{University of Portsmouth, United Kingdom}{2023}
+\role{BEng, Civil Engineering}{Federal University of Technology Akure, Nigeria}{2019}
+\vspace{2.8pt}\textbf{Certifications:} \AWS{} Certified Machine Learning Specialty, \AWS{} Certified Solutions Architect Associate\par
 
 \end{document}

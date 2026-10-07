@@ -4,16 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sadeeq Adeyemi · Computer Vision &amp; Perception Engineer</title>
-<meta name="description" content="Computer vision and perception engineer: multi-object tracking, sensor fusion and state estimation, with deep learning for robotics and autonomous systems.">
+<meta name="description" content="Perception engineer working on multi-object tracking through occlusion. Identities kept through hides raised from 0% to 89% in simulation; 10,871 occlusion events mined from 1,256 real driving clips.">
+<link rel="canonical" href="https://sadeeqgandalf.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sadeeqgandalf.github.io/">
 <meta property="og:title" content="Sadeeq Adeyemi · Computer Vision &amp; Perception Engineer">
-<meta property="og:description" content="Perception for robots, from raw sensor signals to tracked objects to decisions. Multi-object tracking · sensor fusion · state estimation · deep learning for robotics and autonomous systems.">
+<meta property="og:description" content="How does a robot keep track of what it cannot see? Identities kept through occlusion: 0% to 89% in simulation. 10,871 occlusion events mined from real driving data.">
 <meta property="og:image" content="https://sadeeqgandalf.github.io/img/occlusion-lab-3d.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Sadeeq Adeyemi","jobTitle":"Computer Vision and Perception Engineer","url":"https://sadeeqgandalf.github.io/","sameAs":["https://github.com/sadeeqgandalf","https://www.linkedin.com/in/sadeeq-a-a90bb425a"],"knowsAbout":["Multi-object tracking","Sensor fusion","State estimation","Computer vision","Lidar perception"],"alumniOf":"University of Maine"}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fbfaf7;--fg:#1b1d22;--muted:#5d6370;--line:#e4e1da;--card:#fff;--accent:#1f4e8c;--accent-soft:#e8eef7}
 @media (prefers-color-scheme:dark){:root{--bg:#121417;--fg:#e8e6e1;--muted:#9aa0ab;--line:#2a2e35;--card:#181b20;--accent:#8db4ec;--accent-soft:#1c2633}}
-*{box-sizing:border-box}
+*{box-sizing:border-box}figure{margin:0}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 main,header,footer{max-width:920px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;line-height:1.2;margin:0}
@@ -21,12 +29,13 @@ h1{font-size:clamp(2.1rem,5vw,2.9rem);letter-spacing:-.01em}
 h2{font-size:1.55rem;margin:0 0 .4rem;padding-top:3.5rem}
 h2+.sub{color:var(--muted);margin:0 0 1.3rem}
 h3{font-size:1.18rem}
+h4{font:600 .92rem/1.3 Inter,sans-serif;margin:0 0 .55rem}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 p{margin:.6rem 0}
-.muted{color:var(--muted)}
-nav{display:flex;gap:1.4rem;justify-content:flex-end;padding:1.2rem 0;font-size:.9rem}
+.muted{color:var(--muted)}.small{font-size:.9rem}
+nav{display:flex;flex-wrap:wrap;gap:.4rem 1.3rem;justify-content:flex-end;padding:1.2rem 0;font-size:.9rem}
 nav a{color:var(--muted)}
-.hero{padding:3rem 0 .5rem}
+.hero{padding:2.6rem 0 .5rem}
 .role{font:500 1.15rem/1.4 Inter,sans-serif;margin:.6rem 0 .5rem}
 .areas{display:flex;flex-wrap:wrap;gap:.3rem .9rem;color:var(--muted);font-size:.95rem;margin:0 0 1.5rem;padding:0;list-style:none}
 .areas li+li::before{content:"·";margin-right:.9rem;color:var(--line)}
@@ -35,21 +44,31 @@ nav a{color:var(--muted)}
 .btn{border:1px solid var(--line);padding:.45rem .95rem;border-radius:6px;font-size:.9rem;color:var(--fg);background:var(--card)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 .btn:hover{text-decoration:none;border-color:var(--accent)}
-.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.cap{border-top:2px solid var(--accent);padding-top:.7rem}
-.cap h3{font:600 .95rem Inter,sans-serif;margin-bottom:.25rem}
-.cap p{font-size:.88rem;color:var(--muted);margin:0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.kpi{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:8px;padding:1rem 1.1rem}
+.kpi b{display:block;font:600 1.75rem/1.1 "Source Serif 4",Georgia,serif;font-variant-numeric:tabular-nums}
+.kpi span{display:block;font-size:.84rem;line-height:1.45;color:var(--muted);margin-top:.35rem}
 .feature{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.feature+.feature{margin-top:1.6rem}
 .feature img{width:100%;display:block;border-bottom:1px solid var(--line)}
 .feature .body{padding:1.5rem 1.6rem 1.7rem}
 .kicker{font:500 .74rem/1.3 Inter,sans-serif;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);margin-bottom:.5rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.4rem 0}
+.stats.four{grid-template-columns:repeat(4,1fr)}
 .stat{background:var(--accent-soft);border-radius:8px;padding:.9rem 1rem}
-.stat b{display:block;font:600 1.6rem/1.1 "Source Serif 4",serif}
+.stat b{display:block;font:600 1.6rem/1.1 "Source Serif 4",Georgia,serif;font-variant-numeric:tabular-nums}
 .stat span{font-size:.82rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 2rem;margin:1.6rem 0 1.2rem}
+.bar{display:grid;grid-template-columns:9.2rem 1fr 3rem;gap:.6rem;align-items:center;font-size:.84rem;margin:.34rem 0}
+.bar .t{background:var(--accent-soft);border-radius:4px;height:.8rem}
+.bar .t i{display:block;height:100%;min-width:3px;background:var(--accent);border-radius:4px}
+.bar .v{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.cap{font-size:.8rem;color:var(--muted);margin:.5rem 0 0}
 table{border-collapse:collapse;width:100%;font-size:.88rem;margin:1rem 0}
-th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--line)}
-th{font-weight:500;color:var(--muted)}td.n{font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--muted)}td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.8rem 1rem;font-size:.92rem;margin:1.2rem 0}
+.note p{margin:.2rem 0}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
 .card .media{width:calc(100% + 2.8rem);margin:-1.3rem -1.4rem 1rem;border-bottom:1px solid var(--line);aspect-ratio:16/9;object-fit:cover;border-radius:10px 10px 0 0;display:block;background:#fff}
@@ -58,76 +77,211 @@ th{font-weight:500;color:var(--muted)}td.n{font-variant-numeric:tabular-nums}
 .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto;padding-top:.8rem}
 .tags span{font:400 .72rem JetBrains Mono,monospace;background:var(--accent-soft);color:var(--fg);padding:.15rem .45rem;border-radius:4px}
 .card .more{font-size:.88rem;margin-top:.8rem}
-.wip{font:500 .7rem Inter,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:.05rem .4rem;margin-left:.4rem;vertical-align:middle}
-ul.clean{padding-left:1.1rem;margin:.5rem 0}ul.clean li{margin:.3rem 0}
-.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 2rem}
-.skills h3{font:600 .9rem Inter,sans-serif;margin-bottom:.3rem}
-.skills p{font-size:.92rem;color:var(--muted);margin:0}
+.wip{white-space:nowrap;font:500 .7rem Inter,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:.05rem .4rem;margin-left:.4rem;vertical-align:middle}
+.los{margin:1.3rem 0 .2rem}.los svg{display:block;width:100%;max-width:660px;height:auto}
+.los text{font:500 12px Inter,sans-serif;fill:var(--muted)}.los figcaption{font-size:.8rem;color:var(--muted);margin-top:.5rem}
+.los .ln{stroke:var(--fg);stroke-width:1.5;fill:none}.los .box{fill:var(--accent-soft);stroke:var(--muted);stroke-width:1.2}
+.los .ok{stroke:var(--accent);stroke-width:2}.los .no{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4}
+ul.clean{padding-left:1.1rem;margin:.5rem 0}ul.clean li{margin:.4rem 0}
+ol.steps{padding-left:1.2rem;margin:.6rem 0}ol.steps li{margin:.5rem 0}
+.refs{columns:2;column-gap:2.2rem;font-size:.86rem;padding-left:1.1rem;margin:.4rem 0 1.4rem}
+.refs li{break-inside:avoid;margin:0 0 .5rem}
+.refs .use{color:var(--muted)}
 footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem;font-size:.85rem;color:var(--muted)}
-@media (max-width:720px){.grid,.skills,.caps{grid-template-columns:1fr}.stats{grid-template-columns:1fr}nav{justify-content:flex-start;gap:1rem}}
+@media (max-width:720px){
+  .grid,.two{grid-template-columns:1fr}.kpis,.stats,.stats.four{grid-template-columns:1fr 1fr}
+  .kpi b,.stat b{font-size:1.4rem}.feature .body{padding:1.2rem 1.1rem 1.4rem}
+  .bar{grid-template-columns:7.4rem 1fr 2.8rem}.areas{gap:.15rem 1rem}.areas li+li::before{content:none}.refs{columns:1}nav{justify-content:flex-start}
+  table{font-size:.82rem}th,td{padding:.4rem .35rem}
+}
 </style>
 </head>
 <body>
 <header>
-  <nav><a href="#expertise">Expertise</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+  <nav><a href="#results">Results</a><a href="#research">Research</a><a href="#real-data">Real data</a><a href="#projects">Projects</a><a href="#background">Background</a><a href="#references">References</a><a href="#contact">Contact</a></nav>
   <section class="hero">
     <h1>Sadeeq Adeyemi</h1>
     <p class="role">Computer Vision &amp; Perception Engineer</p>
     <ul class="areas"><li>Multi-Object Tracking</li><li>Sensor Fusion</li><li>State Estimation</li><li>Deep Learning for Robotics &amp; Autonomous Systems</li></ul>
-    <p class="lede">I build perception for robots, from raw sensor signals to tracked objects to decisions. Most of my work asks one hard question: <strong>how does a robot keep track of what it cannot see?</strong> I answer it with deep learning where it helps, probabilistic estimation where it is needed, and controlled experiments with Monte Carlo statistics behind every claim.</p>
+    <p class="lede">My work asks one hard question: <strong>how does a robot keep track of what it cannot see?</strong> When a person walks behind a truck or a boulder, most trackers lose them and hand out a new identity when they reappear. I measure that failure and fix it, first in simulation and now on real driving data.</p>
     <div class="links">
-      <a class="btn primary" href="#research">Featured research</a>
+      <a class="btn primary" href="https://sadeeqgandalf.github.io/lunar-occlusion-tracking/track.html">Open the live tracking lab</a>
+      <a class="btn" href="cv.pdf">CV (PDF)</a>
       <a class="btn" href="https://github.com/sadeeqgandalf">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/sadeeq-a-a90bb425a">LinkedIn</a>
-      <a class="btn" href="cv.pdf">CV (PDF)</a>
+      <a class="btn" href="mailto:sideeqadeyemi@icloud.com">Email</a>
     </div>
   </section>
 </header>
 
 <main>
-<section id="expertise">
-  <h2>Expertise</h2>
-  <p class="sub">Each area below is backed by a project on this page.</p>
-  <div class="caps">
-    <div class="cap"><h3>Computer Vision</h3><p>Detection (YOLOv8, Faster R-CNN), open-vocabulary segmentation (SAM 3), multi-object tracking and MOTS, re-identification, camera geometry.</p></div>
-    <div class="cap"><h3>Deep Learning</h3><p>PyTorch from scratch: Vision Transformers, NeRF, imbalanced classification; PyTorch3D differentiable rendering.</p></div>
-    <div class="cap"><h3>Machine Perception</h3><p>Occlusion and visibility reasoning, lidar point-cloud detection and moving-object segmentation, track existence.</p></div>
-    <div class="cap"><h3>Sensor Fusion</h3><p>KF / EKF / UKF, particle and PHD filters, GNN / JPDA / MHT association, camera + lidar + radar fusion, multi-view tracking.</p></div>
-    <div class="cap"><h3>Signal Processing</h3><p>FMCW radar from raw IF samples: range-Doppler, CFAR detection, angle estimation; Allan variance and sensor noise models.</p></div>
-    <div class="cap"><h3>Robotics &amp; Autonomy</h3><p>Closed-loop autonomy (perception → prediction → planning → control), rover and spacecraft navigation, visual-navigation foundation models.</p></div>
+<section id="results">
+  <h2>Results at a glance</h2>
+  <p class="sub">Every number below comes from an experiment described on this page.</p>
+  <div class="kpis">
+    <div class="kpi"><b>0% → 89%</b><span>of identities kept when a person is hidden for 1 to 5 seconds: a naive tracker against mine, in simulation</span></div>
+    <div class="kpi"><b>75.6 → 6.6</b><span>identity switches per run after fusing camera, lidar and a second camera</span></div>
+    <div class="kpi"><b>10,871</b><span>pedestrian occlusion events mined from 1,256 real driving clips in 12 countries</span></div>
+    <div class="kpi"><b>100 / 100</b><span>closed-loop driving runs passed with zero collisions</span></div>
+    <div class="kpi"><b>1.6 ms</b><span>per tracking frame, inside a 100 ms real-time budget</span></div>
+    <div class="kpi"><b>3</b><span>independent builds of the tracker (JavaScript, MATLAB, Python) that reproduce each other</span></div>
   </div>
 </section>
 
 <section id="research">
-  <h2>Featured research</h2>
-  <p class="sub">Computer vision · multi-object tracking · sensor fusion</p>
+  <h2>Featured research: tracking through occlusion</h2>
+  <p class="sub">Independent research in two parts. Part 1 builds the tracker and measures it. Part 2 takes the question to real roads.</p>
+
   <article class="feature">
-    <img src="img/occlusion-lab-3d.png" alt="3-D lunar boulder field with NASA astronaut models, the rover mast camera's rendered view and trackers compared live">
+    <a href="https://sadeeqgandalf.github.io/lunar-occlusion-tracking/track.html"><img src="img/occlusion-lab-3d.png" alt="3-D lunar boulder field with NASA astronaut models, the rover mast camera's rendered view and trackers compared live"></a>
     <div class="body">
-      <div class="kicker">Occlusion-aware multi-object tracking · Artemis lunar surface</div>
+      <div class="kicker">Part 1 · Simulation · Artemis lunar surface</div>
       <h3>Lunar Occlusion Tracking</h3>
       <p>A rover's mast camera tracks astronauts walking among boulders at the lunar south pole. When someone steps behind a rock or into a long polar shadow, does the tracker keep their identity, or call them a new person when they reappear?</p>
-      <p>I modelled 3-D visibility (line of sight to the body against half-buried boulders, plus cast shadows under a low sun) and built it into the tracker: a missed detection counts as evidence of absence only in proportion to the <em>expected</em> detection probability. From there the trackers climb a ladder: occlusion awareness, negative information, learned appearance re-identification, a second camera, then lidar. Each step is measured on identical detections.</p>
-      <div class="stats">
-        <div class="stat"><b>0% → 89%</b><span>identities kept through 1–5 s occlusions (naive → full camera-only tracker)</span></div>
-        <div class="stat"><b>75.6 → 6.6</b><span>ID switches per 300 s run (camera + lidar + second camera)</span></div>
-        <div class="stat"><b>20 seeds</b><span>per configuration with 95% intervals; one script regenerates every table</span></div>
+      <p>I modelled 3-D line of sight to each person and built it into the tracker. A missed detection now counts as evidence that the person left only if the tracker <em>expected</em> to see them. From there the tracker climbs a ladder, one idea at a time, and every step is measured on identical detections.</p>
+
+      <div class="two">
+        <div role="img" aria-label="Same identity kept after a 1 to 5 second hide, camera only. Naive tracker 0 percent, occlusion-aware 36 percent, plus negative information 46 percent, plus appearance re-identification 89 percent.">
+          <h4>Same identity kept after a 1 to 5 s hide</h4>
+          <div class="bar"><span>Naive tracker</span><span class="t"><i style="width:0%"></i></span><span class="v">0%</span></div>
+          <div class="bar"><span>Occlusion-aware</span><span class="t"><i style="width:36%"></i></span><span class="v">36%</span></div>
+          <div class="bar"><span>+ negative information</span><span class="t"><i style="width:46%"></i></span><span class="v">46%</span></div>
+          <div class="bar"><span>+ appearance re-ID</span><span class="t"><i style="width:89%"></i></span><span class="v">89%</span></div>
+          <p class="cap">Camera only, boulder field. Higher is better. The naive tracker assumes everyone is always visible.</p>
+        </div>
+        <div role="img" aria-label="Identity switches per 300 second run. Naive tracker 75.6, occlusion-aware 54.0, plus negative information 47.8, plus appearance re-identification 23.3, plus second camera 9.0, plus lidar 6.6.">
+          <h4>Identity switches per 300 s run</h4>
+          <div class="bar"><span>Naive tracker</span><span class="t"><i style="width:100%"></i></span><span class="v">75.6</span></div>
+          <div class="bar"><span>Occlusion-aware</span><span class="t"><i style="width:71.4%"></i></span><span class="v">54.0</span></div>
+          <div class="bar"><span>+ negative information</span><span class="t"><i style="width:63.2%"></i></span><span class="v">47.8</span></div>
+          <div class="bar"><span>+ appearance re-ID</span><span class="t"><i style="width:30.8%"></i></span><span class="v">23.3</span></div>
+          <div class="bar"><span>+ second camera</span><span class="t"><i style="width:11.9%"></i></span><span class="v">9.0</span></div>
+          <div class="bar"><span>+ lidar</span><span class="t"><i style="width:8.7%"></i></span><span class="v">6.6</span></div>
+          <p class="cap">Lower is better. An identity switch is the tracker giving a known person a new ID.</p>
+        </div>
       </div>
+      <p class="muted small">20 random seeds × 300 s for every row, with 95% confidence intervals in the repository. The 89% is [85–92] over 275 hides.</p>
+
+      <h4 style="margin-top:1.5rem">What the experiments showed</h4>
+      <ul class="clean">
+        <li><strong>More sensors make a naive tracker worse.</strong> With camera, lidar and a second camera it goes from 75.6 to 254 identity switches, because every sensor that cannot see a person reports them as gone. Sensors only help a tracker that knows what each one can see.</li>
+        <li><strong>A second viewpoint beats a better sensor at the same spot.</strong> A second camera cut switches from 47.8 to 19.6. A lidar on the same mast cut them to 37.9.</li>
+        <li><strong>Long hides need appearance.</strong> Motion alone keeps 7% of identities through hides over 5 s. Appearance re-identification lifts that to 50%, and a second camera to 87%.</li>
+        <li><strong>An event camera works if the tracker reasons about visibility.</strong> I fitted an event camera model to real recordings (the EVOS dataset). With occlusion reasoning it matches the ordinary camera while people keep moving (51.4 against 47.8 switches, intervals overlap). It fails when people stand still, which told me the motion model needs a "stopped" mode.</li>
+        <li><strong>Lidar masks from range alone.</strong> Instance segmentation on the lidar range image reaches 0.94 mean mask IoU against the true person masks.</li>
+      </ul>
+
+      <h4 style="margin-top:1.5rem">Checked against industry tools</h4>
+      <p class="small">I ran MathWorks' built-in trackers on the same detections. Unaided, none of them keeps an identity through a hide. Given my visibility model, all three improve.</p>
       <table>
-        <thead><tr><th>Tracker (camera only, boulder field)</th><th>ID switches / run</th><th>IDF1</th></tr></thead>
+        <thead><tr><th>Tracker</th><th>Same ID after 1 to 5 s hide</th><th>With my visibility model</th></tr></thead>
         <tbody>
-          <tr><td>Naive (everyone always visible)</td><td class="n">75.6</td><td class="n">0.229</td></tr>
-          <tr><td>Occlusion-aware</td><td class="n">54.0</td><td class="n">0.264</td></tr>
-          <tr><td>+ negative information</td><td class="n">47.8</td><td class="n">0.279</td></tr>
-          <tr><td>+ appearance re-ID</td><td class="n">23.3</td><td class="n">0.540</td></tr>
+          <tr><td>MathWorks <code>trackerGNN</code></td><td class="n">0%</td><td class="n">12%</td></tr>
+          <tr><td>MathWorks <code>trackerTOMHT</code></td><td class="n">0%</td><td class="n">37%</td></tr>
+          <tr><td>MathWorks <code>trackerJPDA</code> (JIPDA)</td><td class="n">0%</td><td class="n">57%</td></tr>
+          <tr><td>Mine, motion only</td><td class="n">0%</td><td class="n">49%</td></tr>
         </tbody>
       </table>
-      <p class="muted" style="font-size:.9rem">A sensor-fusion result I did not expect: adding sensors makes a naive tracker <em>worse</em> (75.6 → 254 switches), because every sensor that cannot see a person reports them as gone. More sensors only help a tracker that knows what each one can see, and a second viewpoint helped more than a better sensor at the same spot.</p>
-      <p class="muted" style="font-size:.9rem">Built three times as cross-checks: a real-time browser lab (Three.js, official NASA 3-D models), MATLAB (validated against MathWorks <code>trackerGNN</code>, <code>trackerJPDA</code>, <code>trackerTOMHT</code>) and PyTorch3D with rendered camera detections.</p>
-      <div class="tags"><span>multi-object tracking</span><span>re-ID</span><span>EKF</span><span>PHD filter</span><span>camera + lidar fusion</span><span>PyTorch3D</span><span>MATLAB</span><span>Three.js</span></div>
-      <p class="more" style="margin-top:1.2rem"><a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking">Code, results and learning guide →</a></p>
+      <p class="muted small">MATLAB, 10 seeds × 300 s. JIPDA with visibility beat my own motion-only tracker (33 against 44 switches per run). I report that because it showed me what to build next: soft association, which weighs every nearby detection instead of committing to one.</p>
+      <p class="muted small"><strong>Limits.</strong> Simulated walkers and a sensor model, not a neural detector on real images. That is why Part 2 exists.</p>
+      <div class="tags"><span>multi-object tracking</span><span>re-ID</span><span>EKF</span><span>Hungarian</span><span>PHD filter</span><span>camera + lidar fusion</span><span>event camera</span><span>PyTorch3D</span><span>MATLAB</span><span>C++17</span><span>Three.js</span></div>
+      <p class="more" style="margin-top:1.2rem"><a href="https://sadeeqgandalf.github.io/lunar-occlusion-tracking/track.html">Live lab →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking">Code and results →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking/blob/main/docs/TRACKERS.md">Every tracker explained →</a></p>
     </div>
   </article>
+
+  <article class="feature" id="real-data">
+    <div class="body">
+      <div class="kicker">Part 2 · Real data · NVIDIA PhysicalAI-AV dataset</div>
+      <h3>Occlusion Mining on Real Driving Data</h3>
+      <p>NVIDIA's dataset has 306,152 real driving clips with 3-D boxes, but nothing in it says "this person is hidden right now". I wrote a line-of-sight test to find those moments: 16 rays from the front camera to each person, checked against every other object's 3-D box and, where lidar is available, against the nearest measured surface.</p>
+      <figure class="los">
+        <svg viewBox="0 0 640 190" role="img" aria-label="Side view of the line-of-sight test. Rays run from the car's camera to four heights on a person. The two upper rays pass over a parked car and are clear. The two lower rays hit the parked car and are blocked.">
+          <line class="ln" x1="16" y1="166" x2="624" y2="166"/>
+          <rect class="box" x="24" y="118" width="100" height="40" rx="9"/><circle class="ln" cx="48" cy="158" r="8"/><circle class="ln" cx="100" cy="158" r="8"/>
+          <circle cx="112" cy="112" r="5" fill="var(--accent)"/>
+          <text x="24" y="100">Front camera</text>
+          <rect class="box" x="300" y="112" width="150" height="46" rx="9"/><circle class="ln" cx="328" cy="158" r="8"/><circle class="ln" cx="422" cy="158" r="8"/>
+          <text x="375" y="139" text-anchor="middle">Another car's 3-D box</text>
+          <line class="ok" x1="112" y1="112" x2="560" y2="70"/><line class="ok" x1="112" y1="112" x2="560" y2="98"/>
+          <line class="no" x1="112" y1="112" x2="300" y2="117.9"/><line class="no" x1="112" y1="112" x2="300" y2="129.6"/>
+          <rect class="ln" x="551" y="56" width="18" height="110" rx="9"/>
+          <circle cx="560" cy="70" r="4.5" fill="var(--accent)"/><circle cx="560" cy="98" r="4.5" fill="var(--accent)"/>
+          <circle class="ln" cx="560" cy="126" r="4.5"/><circle class="ln" cx="560" cy="154" r="4.5"/>
+          <text x="540" y="44">Person</text>
+          <text x="196" y="84" fill="var(--accent)" style="fill:var(--accent)">clear</text><text x="196" y="146">blocked</text>
+        </svg>
+        <figcaption>The idea, seen from the side. Rays to the head and chest clear the other car. Rays to the legs are blocked. The real test casts 16 rays per person, 10 times a second, and records the share that get through.</figcaption>
+      </figure>
+      <div class="stats four">
+        <div class="stat"><b>1,256</b><span>driving clips, 12 countries</span></div>
+        <div class="stat"><b>9.6 M</b><span>3-D boxes processed</span></div>
+        <div class="stat"><b>33,119</b><span>person tracks</span></div>
+        <div class="stat"><b>10,871</b><span>hides of 0.5 s or more</span></div>
+      </div>
+      <div class="two">
+        <div role="img" aria-label="How long people stay hidden. Under 1 second: 3,816 events. 1 to 2 seconds: 3,115. 2 to 5 seconds: 2,783. 5 to 10 seconds: 936. 10 seconds or more: 221.">
+          <h4>How long people stay hidden</h4>
+          <div class="bar"><span>Under 1 s</span><span class="t"><i style="width:100%"></i></span><span class="v">3,816</span></div>
+          <div class="bar"><span>1 to 2 s</span><span class="t"><i style="width:81.6%"></i></span><span class="v">3,115</span></div>
+          <div class="bar"><span>2 to 5 s</span><span class="t"><i style="width:72.9%"></i></span><span class="v">2,783</span></div>
+          <div class="bar"><span>5 to 10 s</span><span class="t"><i style="width:24.5%"></i></span><span class="v">936</span></div>
+          <div class="bar"><span>10 s or more</span><span class="t"><i style="width:5.8%"></i></span><span class="v">221</span></div>
+          <p class="cap">Hide events by duration. Half last 1.3 s or less.</p>
+        </div>
+        <div>
+          <h4>What the hides look like</h4>
+          <ul class="clean small" style="margin-top:0">
+            <li>Hides occur in <strong>644 of 1,256</strong> clips.</li>
+            <li><strong>3,858</strong> end with the person back in view. <strong>731</strong> of those last 2 s or more. These are the test cases for a tracker's memory.</li>
+            <li>Cars do <strong>57%</strong> of the hiding and other people <strong>35%</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>What I learned about the data</h4>
+      <ul class="clean">
+        <li><strong>Person tracks in the machine labels are short.</strong> The typical one lasts 3.0 s of a 20 s clip, and 31% last under 1 s. Tracks never pause: a hidden person's box is guessed through the hide, or the track ends and a new ID starts.</li>
+        <li><strong>The lidar is raw.</strong> Every point is recorded at its own instant, so I move each one with the car's motion before it lines up with the camera. I checked the result with a number: point angles match the beam angles to 0.03° at 8 m/s, and camera and lidar clocks agree to about 10 ms.</li>
+        <li><strong>Boxes alone are a poor judge of visibility.</strong> On four clips, boxes call a person hidden in 41% of frames and the lidar in 32%. The lidar confirms only 56% of the box calls, because walls, poles and unlabelled parked cars have no box.</li>
+        <li><strong>Small downloads from a 133 TB dataset.</strong> I pull one clip out of a remote archive with HTTP range requests: 10 MB instead of 2 GB.</li>
+      </ul>
+      <div class="note">
+        <p><strong>A number I did not publish.</strong> My first count of identity switches on real data linked old and new IDs by motion alone. I hand-checked 10 of those links: 3 were plausible, 2 had linked a neighbour in a crowd, and 5 could not be judged from the image crops. So that result stays provisional until appearance, from segmentation masks, can settle who is who.</p>
+      </div>
+      <p class="muted small">The dataset is gated under NVIDIA's licence, so this page shows aggregate numbers and no footage. The machine labels are not hand-checked. Code is available on request.</p>
+      <div class="tags"><span>3-D geometry</span><span>ray casting</span><span>fisheye camera model</span><span>lidar motion compensation</span><span>time synchronization</span><span>Python</span><span>pandas</span></div>
+    </div>
+  </article>
+</section>
+
+<section id="independent">
+  <h2>How the research was run</h2>
+  <p class="sub">One person and one laptop, so the checks are built into the work.</p>
+  <div class="kpis">
+    <div class="kpi"><b>2 days</b><span>from first access to NVIDIA's dataset to 10,871 mined occlusion events</span></div>
+    <div class="kpi"><b>No GPU</b><span>all of the real-data mining ran on a laptop CPU</span></div>
+    <div class="kpi"><b>4 languages</b><span>JavaScript, MATLAB and Python trackers that agree, plus a C++17 filter that matches to 4e-10</span></div>
+    <div class="kpi"><b>20 seeds</b><span>per configuration with 95% intervals. One command regenerates every table</span></div>
+    <div class="kpi"><b>46 tests</b><span>in the tracking lab, including one that proves true identities never reach the tracker</span></div>
+    <div class="kpi"><b>34 sources</b><span>cited, each mapped to the code that uses it</span></div>
+  </div>
+  <ul class="clean" style="margin-top:1.6rem">
+    <li><strong>It did not work the first time.</strong> The first tracker kept 5 to 9% of identities. I traced that to three separate causes: false tracks confirmed from clutter, hidden tracks hijacked by passers-by, and estimates drifting out of the blind zone. I fixed each with the standard remedy and measured each step.</li>
+    <li><strong>Controlled comparisons.</strong> Every tracker sees identical detections and differs in one thing, so a result can be attributed to it.</li>
+    <li><strong>Honest about limits.</strong> Each project states what it does not claim. Overlapping confidence intervals are reported as overlapping.</li>
+    <li><strong>AI coding agents, held to evidence.</strong> I work with AI coding agents every day. They write quickly. I decide what to build, what counts as proof and what gets thrown away. Nothing reaches this page without a test, a second implementation or a hand check behind it.</li>
+  </ul>
+</section>
+
+<section id="vision">
+  <h2>Where this is going</h2>
+  <p class="sub">The goal: track and segment every object in every frame, and keep each identity through every hide.</p>
+  <ol class="steps">
+    <li><strong>My tracker on real boxes.</strong> Run it on the 3,858 hide-and-reveal events and report identity kept by hide duration, with IDF1 and HOTA.</li>
+    <li><strong>Identity from appearance.</strong> Use segmentation masks from SAM 3 on a GPU, so that who is who after a hide is settled by what the person looks like and not by where they might have walked.</li>
+    <li><strong>Close the two gaps the experiments exposed.</strong> Soft association in the style of JIPDA, and a motion model that knows people stop.</li>
+    <li><strong>Ground truth through hides.</strong> Masks, identities and measured visibility for every frame, so any tracker can be scored on exactly the moments that break it.</li>
+  </ol>
 </section>
 
 <section id="projects">
@@ -144,20 +298,27 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <article class="card">
       <img class="media" src="img/mission-control-3d.png" alt="NASA Perseverance on Mars terrain with each estimator's belief and uncertainty disc">
       <h3>Navigation Filters under Faults</h3>
-      <p>A Mars rover, a fighter jet and a spacecraft docking with NASA's Gateway, each navigated by dead reckoning, EKF, UKF and a particle filter on the same sensor stream under injected faults, with an onboard health monitor. Every analytic Jacobian is checked numerically.</p>
-      <div class="tags"><span>EKF</span><span>UKF</span><span>particle filter</span><span>NEES / NIS</span></div>
+      <p>A Mars rover, a fighter jet and a spacecraft docking with NASA's Gateway, each navigated by dead reckoning, EKF, UKF and a particle filter on the same sensor stream under injected faults. Every analytic Jacobian is checked numerically.</p>
+      <p class="result">Rover position error <strong>17.0 m → 0.27 m</strong> (dead reckoning against EKF). The same EKF in C++17 runs in <strong>0.1 µs</strong> per step, against 2.5 µs in JavaScript and 9 µs in NumPy.</p>
+      <div class="tags"><span>EKF</span><span>UKF</span><span>particle filter</span><span>C++17</span><span>NEES / NIS</span></div>
       <p class="more"><a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking">Code →</a></p>
     </article>
-    <article class="card">
-      <h3>Visual Navigation on a Real Rover <span class="wip">in progress</span></h3>
-      <p>Bringing visual-navigation foundation models (GNM, ViNT, NoMaD) onto a FrodoBots Earth Rover through its SDK: camera in, waypoints out, on a physical outdoor robot.</p>
-      <div class="tags"><span>embodied AI</span><span>visual navigation</span><span>transformers</span><span>robot SDK</span></div>
-    </article>
+  </div>
+
+  <h2>Lidar &amp; radar from raw signals</h2>
+  <p class="sub">Classical perception written from scratch and graded against ground truth.</p>
+  <div class="grid">
     <article class="card">
       <img class="media" src="img/lidar-boxes.png" alt="Bird's-eye lidar scan with 17 oriented bounding boxes" style="object-fit:contain">
       <h3>Lidar Perception on Argoverse 2</h3>
       <p>Classical point-cloud perception on real Argoverse 2 sweeps: ground removal, DBSCAN clustering, oriented boxes from PCA heading, and moving-object segmentation from ego-motion-compensated scene flow, graded against ground truth.</p>
       <div class="tags"><span>lidar</span><span>Open3D</span><span>SE(3)</span><span>scene flow</span></div>
+    </article>
+    <article class="card">
+      <img class="media" src="img/radar-scene.png" alt="Simulated FMCW radar scene with detections">
+      <h3>Sensor Fusion from Raw Signals</h3>
+      <p>A MATLAB study of AV perception from the signal level up: sensor noise modelling (Allan variance, GNSS error) and FMCW radar processing from raw IF samples to range-Doppler maps and CFAR detections, written from scratch, checked against the Cramér-Rao bound and cross-validated against MathWorks toolboxes.</p>
+      <div class="tags"><span>MATLAB</span><span>FMCW radar</span><span>CFAR</span><span>DSP</span></div>
     </article>
   </div>
 
@@ -166,8 +327,8 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
   <div class="grid">
     <article class="card">
       <h3>Open-Vocabulary Segmentation &amp; Tracking</h3>
-      <p>Text-prompted segmentation and tracking (MOTS) on KITTI and BDD100K driving video with Meta's SAM 3, merging per-prompt masklets into one identity space, evaluated with TrackEval (HOTA).</p>
-      <div class="tags"><span>SAM 3</span><span>MOTS</span><span>KITTI</span><span>BDD100K</span><span>HOTA</span></div>
+      <p>Text-prompted segmentation and tracking (MOTS) on KITTI and BDD100K driving video with Meta's SAM 3, merging per-prompt masklets into one identity space. Patched to run on CPU and Apple Silicon as well as CUDA.</p>
+      <div class="tags"><span>SAM 3</span><span>MOTS</span><span>KITTI</span><span>BDD100K</span></div>
       <p class="more"><a href="https://github.com/sadeeqgandalf/ComputerVision_Research">Code →</a></p>
     </article>
     <article class="card">
@@ -189,14 +350,13 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     </article>
   </div>
 
-  <h2>Signal processing &amp; machine learning</h2>
-  <p class="sub">From raw signals to production-style models.</p>
+  <h2>More work</h2>
+  <p class="sub">A robot in progress and a model outside perception.</p>
   <div class="grid">
     <article class="card">
-      <img class="media" src="img/radar-scene.png" alt="Simulated FMCW radar scene with detections">
-      <h3>Sensor Fusion from Raw Signals</h3>
-      <p>A MATLAB study of AV perception from the signal level up: sensor noise modelling (Allan variance, GNSS error) and FMCW radar processing from raw IF samples to range-Doppler maps, CFAR detection and calibrated detections, written from scratch and cross-validated against MathWorks toolboxes.</p>
-      <div class="tags"><span>MATLAB</span><span>FMCW radar</span><span>CFAR</span><span>DSP</span></div>
+      <h3>Visual Navigation on a Real Rover <span class="wip">in progress</span></h3>
+      <p>Bringing visual-navigation foundation models (GNM, ViNT, NoMaD) onto a FrodoBots Earth Rover through its SDK: camera in, waypoints out, on a physical outdoor robot.</p>
+      <div class="tags"><span>embodied AI</span><span>visual navigation</span><span>transformers</span><span>robot SDK</span></div>
     </article>
     <article class="card">
       <h3>Fraud Detection Pipeline</h3>
@@ -207,34 +367,96 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
   </div>
 </section>
 
-<section id="methods">
-  <h2>How I work</h2>
-  <ul class="clean">
-    <li><strong>Controlled comparisons.</strong> Methods see identical inputs and differ in one thing, so the result can be attributed to it.</li>
-    <li><strong>Statistics, not screenshots.</strong> Results are averaged over many seeds with confidence intervals, and overlapping intervals are reported as such.</li>
-    <li><strong>Reproducible.</strong> One command regenerates every table, stamped with the git commit that produced it.</li>
-    <li><strong>Cross-validated.</strong> Hand-written algorithms are checked against reference implementations (MathWorks toolboxes, TrackEval).</li>
-    <li><strong>Honest about limits.</strong> Each project states what it does not claim, and what failed on the way.</li>
-  </ul>
-  <div class="skills" style="margin-top:1.8rem">
-    <div><h3>Languages</h3><p>Python, MATLAB, C++, JavaScript</p></div>
-    <div><h3>Deep learning</h3><p>PyTorch, PyTorch3D, Ultralytics YOLO, SAM 3, torchvision</p></div>
-    <div><h3>Vision &amp; 3-D</h3><p>OpenCV, Open3D, Three.js / WebGL, Rerun</p></div>
-    <div><h3>Estimation &amp; evaluation</h3><p>MathWorks Sensor Fusion &amp; Tracking, TrackEval, CLEAR-MOT, IDF1, HOTA, GOSPA</p></div>
-  </div>
+<section id="skills">
+  <h2>Skills, with evidence</h2>
+  <p class="sub">Where each skill can be seen on this page.</p>
+  <table>
+    <thead><tr><th>Skill</th><th>What I did with it</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Multi-object tracking</strong></td><td>EKF per track, Hungarian assignment, track existence, negative information, appearance re-ID. Compared with GNN, JPDA and MHT.</td><td>Lunar Occlusion Tracking</td></tr>
+      <tr><td><strong>Sensor fusion</strong></td><td>Camera, lidar, radar and a second viewpoint fused at measurement level, each with its own visibility model.</td><td>Lunar lab, driving stack</td></tr>
+      <tr><td><strong>3-D geometry and calibration</strong></td><td>Fisheye camera projection, lidar motion compensation per point, time synchronization, ray casting against oriented boxes.</td><td>Occlusion mining</td></tr>
+      <tr><td><strong>Deep learning</strong></td><td>PyTorch: a Vision Transformer from scratch, SAM 3 segmentation and tracking, YOLOv8 detection, PyTorch3D rendering.</td><td>Computer vision projects</td></tr>
+      <tr><td><strong>State estimation</strong></td><td>EKF, UKF and particle filters with consistency checks. EKF localization fusing IMU, wheel odometry and lidar in ROS 2.</td><td>Navigation lab, UMaine robotics lab</td></tr>
+      <tr><td><strong>Real-time code</strong></td><td>Tracker at 1.6 ms per frame. Navigation EKF ported to C++17 at 0.1 µs per step.</td><td>Lunar lab</td></tr>
+      <tr><td><strong>Evaluation</strong></td><td>MOTA, IDF1, GOSPA, Monte Carlo seeds, Wilson confidence intervals, cross-checks against reference toolboxes.</td><td>Every project</td></tr>
+    </tbody>
+  </table>
+  <p class="muted small"><strong>Tools.</strong> Python, C++, MATLAB, JavaScript · PyTorch, PyTorch3D, Ultralytics YOLO, SAM 3 · OpenCV, Open3D, NumPy, pandas · ROS 2 · Git, Docker, AWS · MathWorks Sensor Fusion and Tracking Toolbox · Three.js / WebGL</p>
+</section>
+
+<section id="background">
+  <h2>Background</h2>
+  <p>I came to perception from structures. I spent five years at a steel company, both fabricating structural steel and building the computer vision model that inspected it for defects. Graduate school followed, in the United Kingdom and then in Maine, and I now build robots in the University of Maine robotics lab.</p>
+  <table>
+    <tbody>
+      <tr><td class="n">2025 – present</td><td><strong>Robotics Research Assistant</strong>, University of Maine Robotics Laboratory. Mobile robots end to end: sensor integration, ROS 2 nodes, EKF localization, navigation.</td></tr>
+      <tr><td class="n">2025 – present</td><td><strong>MS, Data Science and Engineering</strong>, University of Maine</td></tr>
+      <tr><td class="n">2023 – 2025</td><td><strong>MS, Structural Engineering</strong>, University of Maine</td></tr>
+      <tr><td class="n">2024</td><td><strong>Materials Engineer</strong>, R.W. Gillespie, Maine</td></tr>
+      <tr><td class="n">2023</td><td><strong>MSc, Project Management</strong>, University of Portsmouth, United Kingdom</td></tr>
+      <tr><td class="n">2018 – 2023</td><td><strong>Machine Learning Engineer and Structural Steel Fabricator</strong>, NewTech Steel, Nigeria. Computer vision for steel defect detection.</td></tr>
+      <tr><td class="n">2019</td><td><strong>BEng, Civil Engineering</strong>, Federal University of Technology Akure, Nigeria</td></tr>
+    </tbody>
+  </table>
+  <p class="muted small"><strong>Certifications.</strong> AWS Certified Machine Learning Specialty · AWS Certified Solutions Architect Associate</p>
+</section>
+
+<section id="references">
+  <h2>References</h2>
+  <p class="sub">The work this research builds on. The <a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking/blob/main/docs/REFERENCES.md">full annotated list</a> maps all 34 works to the code that uses them.</p>
+
+  <h4>Tracking, data association and occlusion</h4>
+  <ol class="refs">
+    <li>D. Musicki, R. Evans, S. Stankovic. Integrated probabilistic data association. <em>IEEE Trans. Automatic Control</em>, 1994. <span class="use">Track existence.</span></li>
+    <li>B. Ristic, B.-T. Vo, B.-N. Vo, A. Farina. A tutorial on Bernoulli filters. <em>IEEE Trans. Signal Processing</em>, 2013. <span class="use">Existence update with clutter.</span></li>
+    <li>W. Koch. On exploiting "negative" sensor evidence for target tracking and sensor data fusion. <em>Information Fusion</em>, 2007. <span class="use">Negative information.</span></li>
+    <li>M. Yang, Y. Liu, L. Wen, Z. You, S. Z. Li. A probabilistic framework for multitarget tracking with mutual occlusions. <em>CVPR</em>, 2014. <span class="use">Occlusion inside the likelihood.</span></li>
+    <li>Y. Bar-Shalom, X. R. Li, T. Kirubarajan. <em>Estimation with Applications to Tracking and Navigation</em>. Wiley, 2001. <span class="use">Motion model, gating, consistency.</span></li>
+    <li>H. W. Kuhn. The Hungarian method for the assignment problem. <em>Naval Research Logistics Quarterly</em>, 1955. <span class="use">Assignment.</span></li>
+    <li>A. Bewley, Z. Ge, L. Ott, F. Ramos, B. Upcroft. Simple online and realtime tracking. <em>ICIP</em>, 2016. <span class="use">Baseline family.</span></li>
+    <li>N. Wojke, A. Bewley, D. Paulus. Simple online and realtime tracking with a deep association metric. <em>ICIP</em>, 2017. <span class="use">Appearance re-identification.</span></li>
+    <li>J. Cao, J. Pang, X. Weng, R. Khirodkar, K. Kitani. Observation-centric SORT. <em>CVPR</em>, 2023. <span class="use">Related approach, planned comparison.</span></li>
+    <li>T. Fortmann, Y. Bar-Shalom, M. Scheffe. Sonar tracking of multiple targets using joint probabilistic data association. <em>IEEE J. Oceanic Engineering</em>, 1983. <span class="use">JPDA baseline.</span></li>
+    <li>D. Musicki, R. Evans. Joint integrated probabilistic data association: JIPDA. <em>IEEE Trans. Aerospace and Electronic Systems</em>, 2004. <span class="use">Strongest motion-only baseline.</span></li>
+    <li>D. B. Reid. An algorithm for tracking multiple targets. <em>IEEE Trans. Automatic Control</em>, 1979. <span class="use">MHT baseline.</span></li>
+    <li>R. Mahler. Multitarget Bayes filtering via first-order multitarget moments. <em>IEEE Trans. Aerospace and Electronic Systems</em>, 2003. <span class="use">PHD filter.</span></li>
+  </ol>
+
+  <h4>Evaluation</h4>
+  <ol class="refs">
+    <li>K. Bernardin, R. Stiefelhagen. Evaluating multiple object tracking performance: the CLEAR MOT metrics. <em>EURASIP J. Image and Video Processing</em>, 2008. <span class="use">MOTA, identity switches.</span></li>
+    <li>E. Ristani, F. Solera, R. Zou, R. Cucchiara, C. Tomasi. Performance measures and a data set for multi-target, multi-camera tracking. <em>ECCV Workshops</em>, 2016. <span class="use">IDF1.</span></li>
+    <li>A. Rahmathullah, Á. García-Fernández, L. Svensson. Generalized optimal sub-pattern assignment metric. <em>FUSION</em>, 2017. <span class="use">GOSPA.</span></li>
+    <li>J. Luiten et al. HOTA: a higher order metric for evaluating multi-object tracking. <em>IJCV</em>, 2021. <span class="use">Planned for real data, not yet computed.</span></li>
+    <li>E. B. Wilson. Probable inference, the law of succession, and statistical inference. <em>JASA</em>, 1927. <span class="use">Confidence intervals.</span></li>
+  </ol>
+
+  <h4>Sensing, geometry and data</h4>
+  <ol class="refs">
+    <li>R. Hartley, A. Zisserman. <em>Multiple View Geometry in Computer Vision</em>. Cambridge University Press, 2004. <span class="use">Projection, stereo depth noise.</span></li>
+    <li>S. Thrun, W. Burgard, D. Fox. <em>Probabilistic Robotics</em>. MIT Press, 2005. <span class="use">EKF, UKF, particle filters.</span></li>
+    <li>I. Bogoslavskyi, C. Stachniss. Fast range image-based segmentation of sparse 3D laser scans for online operation. <em>IROS</em>, 2016. <span class="use">Lidar instance masks.</span></li>
+    <li>A. Crain, S. Ulrich. EVent-based Observation of Spacecraft (EVOS). Federated Research Data Repository, 2025. doi:10.20383/103.01538. <span class="use">Event camera model fit.</span></li>
+    <li>E. Mazarico et al. Illumination conditions of the lunar polar regions using LOLA topography. <em>Icarus</em>, 2011. <span class="use">Polar lighting.</span></li>
+    <li>N. Ravi et al. Accelerating 3D deep learning with PyTorch3D. arXiv:2007.08501, 2020. <span class="use">Rendered camera views.</span></li>
+    <li>NVIDIA. PhysicalAI-Autonomous-Vehicles dataset. Hugging Face. <span class="use">Real driving data.</span></li>
+  </ol>
+  <p class="muted small">Datasets used elsewhere on this page: KITTI, BDD100K, Argoverse 2, HAM10000. Professional references are available on request.</p>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>I am looking for computer vision, perception and robotics roles, and research collaborations in machine perception for autonomous and space systems. I am happy to walk through any of this work.</p>
+  <p>I am looking for perception, computer vision and robotics roles, and research collaborations in machine perception for autonomous and space systems. I am based in Bangor, Maine, and open to relocation in the US and Canada. I am happy to walk through any of this work, including the code.</p>
   <div class="links">
     <a class="btn primary" href="mailto:sideeqadeyemi@icloud.com">Email</a>
+    <a class="btn" href="cv.pdf">CV (PDF)</a>
     <a class="btn" href="https://www.linkedin.com/in/sadeeq-a-a90bb425a">LinkedIn</a>
     <a class="btn" href="https://github.com/sadeeqgandalf">GitHub</a>
   </div>
 </section>
 </main>
 
-<footer>© 2026 Sadeeq Adeyemi. NASA 3-D models used under NASA media guidelines; this work is independent and not endorsed by NASA.</footer>
+<footer>© 2026 Sadeeq Adeyemi. NASA 3-D models used under NASA media guidelines. This work is independent and not endorsed by NASA or NVIDIA.</footer>
 </body>
 </html>
