@@ -86,7 +86,7 @@ with AI coding agents.
 \skill{Tracking and fusion}{multi-object tracking, sensor fusion, EKF and UKF state estimation, JPDA and MHT data association}
 \skill{Perception}{computer vision, deep learning, 3D object detection and tracking, instance segmentation, re-identification, SAM 3, YOLOv8}
 \skill{Sensors and data}{camera, lidar point clouds, radar, event cameras, NVIDIA PhysicalAI-\AV, KITTI, BDD100K, Argoverse 2}
-\skill{Practice}{Monte Carlo evaluation, MOTA and IDF1 metrics, automated testing, MATLAB, \AWS, AI coding agents with Claude Code}
+\skill{Practice}{HOTA, IDF1 and MOTA metrics, Monte Carlo evaluation, automated testing, MATLAB, \AWS, AI coding agents}
 
 % ===================================================================================== EXPERIENCE
 \section{Experience}
@@ -139,7 +139,7 @@ with AI coding agents.
 % ------------------------------------------------------------------------------------- other
 \project{Additional Perception Work}{2025 - 2026}
 \begin{itemize}
-  \item Ran SAM 3 text-prompted segmentation and tracking on KITTI and BDD100K, and patched it to run on CPU and Apple Silicon.
+  \item Benchmarked SAM 3 against SAM 3.1 on KITTI-MOTS and MOTS20 with HOTA on an A100 GPU: IDF1 \key{84.8 vs 68.3} on MOTS20.
   \item Built a dashcam pipeline with YOLOv8 detection, tracking, lane detection and time to collision, covered by 24 regression tests.
   \item Built an FMCW radar chain in MATLAB from raw samples to CFAR detections, checked against the Cramer-Rao bound.
 \end{itemize}

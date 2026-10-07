@@ -294,6 +294,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
       <p>A full closed-loop stack in Python: EKF localization, open-vocabulary camera perception, lidar and radar fusion into a multi-object tracker, prediction, Frenet lattice planning, LQR/PID control and an independent safety monitor. It never sees simulator ground truth.</p>
       <p class="result"><strong>100 / 100</strong> Monte Carlo runs pass (10 scenarios × 10 seeds, 0 collisions). With occlusion reasoning off, a pedestrian stepping out from behind a bus is hit in <strong>5 of 10</strong> runs.</p>
       <div class="tags"><span>Python</span><span>sensor fusion</span><span>tracking</span><span>planning</span><span>control</span></div>
+      <p class="more"><a href="https://github.com/sadeeqgandalf/av-stack">Code →</a></p>
     </article>
     <article class="card">
       <img class="media" src="img/mission-control-3d.png" alt="NASA Perseverance on Mars terrain with each estimator's belief and uncertainty disc">
@@ -319,6 +320,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
       <h3>Sensor Fusion from Raw Signals</h3>
       <p>A MATLAB study of AV perception from the signal level up: sensor noise modelling (Allan variance, GNSS error) and FMCW radar processing from raw IF samples to range-Doppler maps and CFAR detections, written from scratch, checked against the Cramér-Rao bound and cross-validated against MathWorks toolboxes.</p>
       <div class="tags"><span>MATLAB</span><span>FMCW radar</span><span>CFAR</span><span>DSP</span></div>
+      <p class="more"><a href="https://github.com/sadeeqgandalf/sensor-fusion">Code →</a></p>
     </article>
   </div>
 
@@ -328,8 +330,9 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <article class="card">
       <h3>Open-Vocabulary Segmentation &amp; Tracking</h3>
       <p>Text-prompted segmentation and tracking (MOTS) on KITTI and BDD100K driving video with Meta's SAM 3, merging per-prompt masklets into one identity space. Patched to run on CPU and Apple Silicon as well as CUDA.</p>
-      <div class="tags"><span>SAM 3</span><span>MOTS</span><span>KITTI</span><span>BDD100K</span></div>
-      <p class="more"><a href="https://github.com/sadeeqgandalf/ComputerVision_Research">Code →</a></p>
+      <p class="result">Benchmarked SAM 3 against SAM 3.1 on KITTI-MOTS and MOTS20 with HOTA, on an A100 GPU. SAM 3 kept identity better on every benchmark: MOTS20 IDF1 <strong>84.8 vs 68.3</strong>, HOTA 72.6 vs 61.5. SAM 3.1 split one person into several tracks: 300 identities for 228 real pedestrians.</p>
+      <div class="tags"><span>SAM 3</span><span>MOTS</span><span>HOTA</span><span>KITTI-MOTS</span><span>MOTS20</span><span>A100</span></div>
+      <p class="more"><a href="https://github.com/sadeeqgandalf/ComputerVision_Research">Code →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/av-stack/tree/main/research/sam_mots_benchmark">Benchmark →</a></p>
     </article>
     <article class="card">
       <h3>AV Perception Pipeline</h3>
@@ -379,7 +382,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
       <tr><td><strong>Deep learning</strong></td><td>PyTorch: a Vision Transformer from scratch, SAM 3 segmentation and tracking, YOLOv8 detection, PyTorch3D rendering.</td><td>Computer vision projects</td></tr>
       <tr><td><strong>State estimation</strong></td><td>EKF, UKF and particle filters with consistency checks. EKF localization fusing IMU, wheel odometry and lidar in ROS 2.</td><td>Navigation lab, UMaine robotics lab</td></tr>
       <tr><td><strong>Real-time code</strong></td><td>Tracker at 1.6 ms per frame. Navigation EKF ported to C++17 at 0.1 µs per step.</td><td>Lunar lab</td></tr>
-      <tr><td><strong>Evaluation</strong></td><td>MOTA, IDF1, GOSPA, Monte Carlo seeds, Wilson confidence intervals, cross-checks against reference toolboxes.</td><td>Every project</td></tr>
+      <tr><td><strong>Evaluation</strong></td><td>HOTA, MOTA, IDF1, GOSPA, Monte Carlo seeds, Wilson confidence intervals, cross-checks against reference toolboxes.</td><td>Every project</td></tr>
     </tbody>
   </table>
   <p class="muted small"><strong>Tools.</strong> Python, C++, MATLAB, JavaScript · PyTorch, PyTorch3D, Ultralytics YOLO, SAM 3 · OpenCV, Open3D, NumPy, pandas · ROS 2 · Git, Docker, AWS · MathWorks Sensor Fusion and Tracking Toolbox · Three.js / WebGL</p>
@@ -428,7 +431,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <li>K. Bernardin, R. Stiefelhagen. Evaluating multiple object tracking performance: the CLEAR MOT metrics. <em>EURASIP J. Image and Video Processing</em>, 2008. <span class="use">MOTA, identity switches.</span></li>
     <li>E. Ristani, F. Solera, R. Zou, R. Cucchiara, C. Tomasi. Performance measures and a data set for multi-target, multi-camera tracking. <em>ECCV Workshops</em>, 2016. <span class="use">IDF1.</span></li>
     <li>A. Rahmathullah, Á. García-Fernández, L. Svensson. Generalized optimal sub-pattern assignment metric. <em>FUSION</em>, 2017. <span class="use">GOSPA.</span></li>
-    <li>J. Luiten et al. HOTA: a higher order metric for evaluating multi-object tracking. <em>IJCV</em>, 2021. <span class="use">Planned for real data, not yet computed.</span></li>
+    <li>J. Luiten et al. HOTA: a higher order metric for evaluating multi-object tracking. <em>IJCV</em>, 2021. <span class="use">SAM 3 and SAM 3.1 benchmark on KITTI-MOTS and MOTS20.</span></li>
     <li>E. B. Wilson. Probable inference, the law of succession, and statistical inference. <em>JASA</em>, 1927. <span class="use">Confidence intervals.</span></li>
   </ol>
 
