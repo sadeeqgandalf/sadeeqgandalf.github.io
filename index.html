@@ -346,8 +346,9 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
       <div class="tags"><span>PyTorch</span><span>ViT</span><span>medical imaging</span><span>interpretability</span></div>
     </article>
     <article class="card">
-      <h3>NeRF 3-D Reconstruction <span class="wip">in progress</span></h3>
-      <p>A from-scratch PyTorch reimplementation of Neural Radiance Fields (Mildenhall et al., 2020): ray generation, positional encoding, hierarchical sampling and volume rendering. 22 tests.</p>
+      <h3>NeRF 3-D Reconstruction</h3>
+      <p>A from-scratch PyTorch reimplementation of Neural Radiance Fields (Mildenhall et al., 2020): ray generation, positional encoding, coarse-to-fine sampling and volume rendering, with 29 tests.</p>
+      <p class="result">A short run on a laptop GPU reconstructs the lego scene to <strong>22.2 dB PSNR</strong> on held-out views after 2,500 steps. Published quality (32.5 dB) needs the full schedule on a CUDA GPU.</p>
       <div class="tags"><span>PyTorch</span><span>NeRF</span><span>3-D vision</span></div>
       <p class="more"><a href="https://github.com/sadeeqgandalf/Nerf-3D-Reconstruction">Code →</a></p>
     </article>
