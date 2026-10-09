@@ -75,9 +75,9 @@
 % EDIT 2
 Perception engineer who builds and measures multi-object tracking and sensor fusion for autonomous vehicles and robots.
 Works in Python, C++ and PyTorch across camera, lidar and radar, combining Kalman filtering and data association with deep
-learning for detection and segmentation. Raised identity retention through occlusion from \key{0\% to 89\%} in simulation, then
-mined \key{10,871 occlusion events} from 1,256 real NVIDIA driving clips. Writes tested, reproducible code and works daily
-with AI coding agents.
+learning for detection and segmentation. Raised identity retention through occlusion from \key{0\% to 89\%} in simulation and
+from \key{2\% to 57\%} on real street geometry from 1,256 NVIDIA driving clips. Writes tested, reproducible code and works
+daily with AI coding agents.
 
 % ===================================================================================== SKILLS
 \section{Skills}
@@ -125,7 +125,7 @@ with AI coding agents.
 \begin{itemize}
   \item Mined \key{10,871 pedestrian occlusion events} from 1,256 driving clips and 9.6 million 3D boxes with a ray-cast line-of-sight test.
   \item Projected lidar into the fisheye camera from calibration data, corrected motion distortion and verified time synchronization to 10 ms.
-  \item Built a lidar depth-buffer visibility check and 3D review tooling for point clouds, blind zones and tracks.
+  \item Ran my tracker on this real geometry. Identities kept through 1 to 5 s hides rose from \key{2\% to 57\%} over 1,600 hides.
   \item Pulled single clips from a 133 TB dataset with HTTP range requests, cutting each download from 2 GB to 10 MB.
 \end{itemize}
 
@@ -139,7 +139,7 @@ with AI coding agents.
 % ------------------------------------------------------------------------------------- other
 \project{Additional Perception Work}{2025 - 2026}
 \begin{itemize}
-  \item Benchmarked SAM 3 against SAM 3.1 on KITTI-MOTS and MOTS20 with HOTA on an A100 GPU: IDF1 \key{84.8 vs 68.3} on MOTS20.
+  \item Benchmarked SAM 3 against SAM 3.1 with HOTA on an A100. SAM 3 kept identity through \key{94\%} of occlusions, SAM 3.1 63\%.
   \item Built a dashcam pipeline with YOLOv8 detection, tracking, lane detection and time to collision, covered by 24 regression tests.
   \item Built an FMCW radar chain in MATLAB from raw samples to CFAR detections, checked against the Cramer-Rao bound.
 \end{itemize}

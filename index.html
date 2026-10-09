@@ -120,11 +120,11 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
   <p class="sub">Every number below comes from an experiment described on this page.</p>
   <div class="kpis">
     <div class="kpi"><b>0% → 89%</b><span>of identities kept when a person is hidden for 1 to 5 seconds: a naive tracker against mine, in simulation</span></div>
+    <div class="kpi"><b>2% → 57%</b><span>of identities kept through 1 to 5 second hides on real street geometry: a naive tracker against mine</span></div>
     <div class="kpi"><b>75.6 → 6.6</b><span>identity switches per run after fusing camera, lidar and a second camera</span></div>
     <div class="kpi"><b>10,871</b><span>pedestrian occlusion events mined from 1,256 real driving clips in 12 countries</span></div>
     <div class="kpi"><b>100 / 100</b><span>closed-loop driving runs passed with zero collisions</span></div>
     <div class="kpi"><b>1.6 ms</b><span>per tracking frame, inside a 100 ms real-time budget</span></div>
-    <div class="kpi"><b>3</b><span>independent builds of the tracker (JavaScript, MATLAB, Python) that reproduce each other</span></div>
   </div>
 </section>
 
@@ -238,7 +238,29 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
         </div>
       </div>
 
-      <h4>What I learned about the data</h4>
+      <h4 style="margin-top:1.5rem">My tracker on this real geometry</h4>
+      <p>I then ran the trackers from Part 1 on these streets without changing them. Real: where every person and vehicle is, how they move, and when a person is hidden. Same as the lab: the camera model and the scoring. The one swap: the tracker asks "can I see that spot?" against vehicles' 3-D boxes where the lab used boulders.</p>
+      <div class="two">
+        <div role="img" aria-label="Same identity kept after a 1 to 5 second hide on real street geometry. Naive tracker 2 percent, occlusion-aware 52 percent, plus negative information 57 percent.">
+          <h4>Same identity kept after a 1 to 5 s hide</h4>
+          <div class="bar"><span>Naive tracker</span><span class="t"><i style="width:2%"></i></span><span class="v">2%</span></div>
+          <div class="bar"><span>Occlusion-aware</span><span class="t"><i style="width:52%"></i></span><span class="v">52%</span></div>
+          <div class="bar"><span>+ negative information</span><span class="t"><i style="width:57%"></i></span><span class="v">57%</span></div>
+          <p class="cap">About 1,600 hides from 769 people in 226 clips, two sensor-noise seeds. 95% intervals: 1–2%, 50–55%, 55–60%.</p>
+        </div>
+        <div>
+          <h4>What held up, and what did not</h4>
+          <ul class="clean small" style="margin-top:0">
+            <li><strong>The idea carries over.</strong> In simulation the same three trackers kept 0%, 36% and 46%.</li>
+            <li><strong>Identity switches fall by 47%</strong> (about 3,100 to about 1,640).</li>
+            <li><strong>An incomplete map costs accuracy.</strong> When lidar, not labels, judges what is hidden, walls and poles hide people the tracker does not know about. It still keeps <strong>45%</strong> against 2%, down from 51% on the same 30 clips.</li>
+            <li><strong>Negative information needs a correct map.</strong> Its small edge disappears when the blind zones are incomplete.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted small"><strong>Limits.</strong> Ground-truth identity is the dataset's machine-made ID through the hide. The detector is the lab's sensor model driven by real visibility, not a neural network on pixels. Boxes carry no appearance, so re-identification is not tested here. Hides of 5 s or more stay hard: 18% kept at best.</p>
+
+      <h4 style="margin-top:1.5rem">What I learned about the data</h4>
       <ul class="clean">
         <li><strong>Person tracks in the machine labels are short.</strong> The typical one lasts 3.0 s of a 20 s clip, and 31% last under 1 s. Tracks never pause: a hidden person's box is guessed through the hide, or the track ends and a new ID starts.</li>
         <li><strong>The lidar is raw.</strong> Every point is recorded at its own instant, so I move each one with the car's motion before it lines up with the camera. I checked the result with a number: point angles match the beam angles to 0.03° at 8 m/s, and camera and lidar clocks agree to about 10 ms.</li>
@@ -249,7 +271,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
         <p><strong>A number I did not publish.</strong> My first count of identity switches on real data linked old and new IDs by motion alone. I hand-checked 10 of those links: 3 were plausible, 2 had linked a neighbour in a crowd, and 5 could not be judged from the image crops. So that result stays provisional until appearance, from segmentation masks, can settle who is who.</p>
       </div>
       <p class="muted small">The dataset is gated under NVIDIA's licence, so this page shows aggregate numbers and no footage. The machine labels are not hand-checked. Code is available on request.</p>
-      <div class="tags"><span>3-D geometry</span><span>ray casting</span><span>fisheye camera model</span><span>lidar motion compensation</span><span>time synchronization</span><span>Python</span><span>pandas</span></div>
+      <div class="tags"><span>multi-object tracking</span><span>3-D geometry</span><span>ray casting</span><span>fisheye camera model</span><span>lidar motion compensation</span><span>time synchronization</span><span>Python</span><span>pandas</span></div>
     </div>
   </article>
 </section>
@@ -277,8 +299,8 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
   <h2>Where this is going</h2>
   <p class="sub">The goal: track and segment every object in every frame, and keep each identity through every hide.</p>
   <ol class="steps">
-    <li><strong>My tracker on real boxes.</strong> Run it on the 3,858 hide-and-reveal events and report identity kept by hide duration, with IDF1 and HOTA.</li>
-    <li><strong>Identity from appearance.</strong> Use segmentation masks from SAM 3 on a GPU, so that who is who after a hide is settled by what the person looks like and not by where they might have walked.</li>
+    <li><strong>Identity from appearance.</strong> Use segmentation masks from SAM 3 on a GPU, so that who is who after a hide is settled by what the person looks like and not by where they might have walked. My benchmark says SAM 3 is the right model: it kept identity through 94% of real occlusions.</li>
+    <li><strong>A neural detector in place of the sensor model.</strong> The real-geometry result uses a modelled camera. The next version detects people in the actual video.</li>
     <li><strong>Close the two gaps the experiments exposed.</strong> Soft association in the style of JIPDA, and a motion model that knows people stop.</li>
     <li><strong>Ground truth through hides.</strong> Masks, identities and measured visibility for every frame, so any tracker can be scored on exactly the moments that break it.</li>
   </ol>
@@ -330,7 +352,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <article class="card">
       <h3>Open-Vocabulary Segmentation &amp; Tracking</h3>
       <p>Text-prompted segmentation and tracking (MOTS) on KITTI and BDD100K driving video with Meta's SAM 3, merging per-prompt masklets into one identity space. Patched to run on CPU and Apple Silicon as well as CUDA.</p>
-      <p class="result">Benchmarked SAM 3 against SAM 3.1 on KITTI-MOTS and MOTS20 with HOTA, on an A100 GPU. SAM 3 kept identity better on every benchmark: MOTS20 IDF1 <strong>84.8 vs 68.3</strong>, HOTA 72.6 vs 61.5. SAM 3.1 split one person into several tracks: 300 identities for 228 real pedestrians.</p>
+      <p class="result">Benchmarked SAM 3 against SAM 3.1 on KITTI-MOTS and MOTS20 with HOTA, on an A100 GPU. SAM 3 kept identity better on every benchmark: MOTS20 IDF1 <strong>84.8 vs 68.3</strong>, HOTA 72.6 vs 61.5. On 245 real occlusion events, SAM 3 kept the person's identity <strong>94%</strong> of the time and SAM 3.1 63%: SAM 3.1 finds the person again but gives them a new ID.</p>
       <div class="tags"><span>SAM 3</span><span>MOTS</span><span>HOTA</span><span>KITTI-MOTS</span><span>MOTS20</span><span>A100</span></div>
       <p class="more"><a href="https://github.com/sadeeqgandalf/ComputerVision_Research">Code →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/av-stack/tree/main/research/sam_mots_benchmark">Benchmark →</a></p>
     </article>
