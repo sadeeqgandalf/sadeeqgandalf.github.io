@@ -254,11 +254,12 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
             <li><strong>The idea carries over.</strong> In simulation the same three trackers kept 0%, 36% and 46%.</li>
             <li><strong>Identity switches fall by 47%</strong> (about 3,100 to about 1,640).</li>
             <li><strong>An incomplete map costs accuracy.</strong> When lidar, not labels, judges what is hidden, walls and poles hide people the tracker does not know about. It still keeps <strong>45%</strong> against 2%, down from 51% on the same 30 clips.</li>
+            <li><strong>A real detector on the real video.</strong> With YOLOv8 deciding hits and misses on the actual frames, it keeps <strong>44%</strong> against 3%. YOLOv8 finds only 76% of fully visible people within 40 m, where the lab model assumed 95%.</li>
             <li><strong>Negative information needs a correct map.</strong> Its small edge disappears when the blind zones are incomplete.</li>
           </ul>
         </div>
       </div>
-      <p class="muted small"><strong>Limits.</strong> Ground-truth identity is the dataset's machine-made ID through the hide. The detector is the lab's sensor model driven by real visibility, not a neural network on pixels. Boxes carry no appearance, so re-identification is not tested here. Hides of 5 s or more stay hard: 18% kept at best.</p>
+      <p class="muted small"><strong>Limits.</strong> Ground-truth identity is the dataset's machine-made ID through the hide. Positions come from the labels, with modelled noise, even when the real detector decides the hits. Boxes carry no appearance, so re-identification is not tested here. Hides of 5 s or more stay hard: 18% kept at best.</p>
 
       <h4 style="margin-top:1.5rem">What I learned about the data</h4>
       <ul class="clean">
@@ -300,7 +301,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
   <p class="sub">The goal: track and segment every object in every frame, and keep each identity through every hide.</p>
   <ol class="steps">
     <li><strong>Identity from appearance.</strong> Use segmentation masks from SAM 3 on a GPU, so that who is who after a hide is settled by what the person looks like and not by where they might have walked. My benchmark says SAM 3 is the right model: it kept identity through 94% of real occlusions.</li>
-    <li><strong>A neural detector in place of the sensor model.</strong> The real-geometry result uses a modelled camera. The next version detects people in the actual video.</li>
+    <li><strong>Positions from the detector, not the labels.</strong> A real detector now decides who is seen. The next version also takes each person's position from the video and lidar.</li>
     <li><strong>Close the two gaps the experiments exposed.</strong> Soft association in the style of JIPDA, and a motion model that knows people stop.</li>
     <li><strong>Ground truth through hides.</strong> Masks, identities and measured visibility for every frame, so any tracker can be scored on exactly the moments that break it.</li>
   </ol>
