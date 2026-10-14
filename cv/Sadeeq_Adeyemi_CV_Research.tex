@@ -1,6 +1,9 @@
-% Research CV for graduate applications (thesis MSc, or PhD). Up to two pages. Build: tectonic Sadeeq_Adeyemi_CV_Research.tex
-% To tailor for a supervisor: put the research interest closest to their lab first, and name their area in the
-% research line under the name.
+% Research CV for graduate applications (thesis MSc, or PhD). Build: tectonic Sadeeq_Adeyemi_CV_Research.tex
+% Content rules (2026-10-14 research, U of T / JHU / UCalgary guidance): education first with grades, thesis and
+% supervisor; research entries name the lab and the advisor and say what I did myself; outputs listed in full;
+% referees on a separate final page with full contact details ("available on request" is not used in Canada).
+% To tailor for a supervisor: put the research interest closest to their lab first.
+% Advisor, GPAs and referees left out by choice (2026-10-14); give them when an application asks.
 \documentclass[10pt,letterpaper]{article}
 \input{cv_style}
 \renewcommand{\BodySize}{9.05}
@@ -8,14 +11,14 @@
 \newgeometry{top=0.42in,bottom=0.4in,left=0.55in,right=0.55in}
 \fontsize{\BodySize}{12.6}\selectfont
 
-\head{Multi-object tracking and segmentation under occlusion}{%
-\href{mailto:sideeqadeyemi@icloud.com}{sideeqadeyemi@icloud.com}\\
+\head{3D perception and multi-object tracking under occlusion}{%
+Bangor, Maine \sep \href{mailto:sideeqadeyemi@icloud.com}{sideeqadeyemi@icloud.com}\\
 \href{https://sadeeqgandalf.github.io}{sadeeqgandalf.github.io} \sep \href{https://github.com/sadeeqgandalf}{github.com/sadeeqgandalf} \sep
 \href{https://www.linkedin.com/in/sadeeq-a-a90bb425a}{linkedin.com/in/sadeeq-a-a90bb425a}}
 
 \section{Research Interests}
-Multi-object tracking and segmentation (MOTS), occlusion reasoning, state estimation and data association, video foundation
-models (SAM 3), and evaluation on public benchmarks (KITTI-MOTS, MOTS20).
+Multi-object tracking and segmentation (MOTS) through occlusion; 3D perception from cameras and lidar; state estimation and data
+association; video foundation models (SAM 3); evaluation on public benchmarks.
 
 \section{Education}
 \entry{MS, Data Science and Engineering}{University of Maine, Orono, USA}{2025 -- present}
@@ -24,33 +27,31 @@ models (SAM 3), and evaluation on public benchmarks (KITTI-MOTS, MOTS20).
 \entry{BEng, Civil Engineering}{Federal University of Technology Akure, Nigeria}{2019}
 
 \section{Research Experience}
-\entry{Graduate research: identity through occlusion in MOTS}{University of Maine}{2026 -- present}
-How much identity can a tracker keep while an object is hidden, and what earns it? Studied in simulation, on real driving geometry,
-and with Meta's SAM 3 and SAM 3.1 run zero-shot.\par\vspace{1pt}
+\entry{Graduate Researcher, CVAR Lab (Computer Vision and Robotics)}{University of Maine}{2026 -- present}
+How much identity can a tracker keep while an object is hidden? I designed and ran every experiment below.\par\vspace{1pt}
 \begin{itemize}
-  \item Benchmarked SAM 3 and SAM 3.1 with the official HOTA evaluation. KITTI-MOTS val, cars: HOTA 82.6 and 74.6. MOTS20 train: 72.6 and 61.5.
-  \item Defined an event-level measure from MOT17 visibility labels: SAM 3 kept identity through 94\% of 245 occlusions, SAM 3.1 63\%,
-        with both falling for hides of 2 seconds or more.
-  \item Showed from the source code and a controlled run that about half of SAM 3.1's deficit comes from its shipped tracking settings
-        (car HOTA 74.0 to 78.3 against SAM 3's 82.3), and found a fault that stops it on long, crowded sequences.
+  \item Benchmarked SAM 3 and SAM 3.1 with official HOTA: KITTI-MOTS val cars 82.6 and 74.6; MOTS20 train 72.6 and 61.5.
+  \item Defined an occlusion measure from MOT17 visibility labels: SAM 3 kept identity through 94\% of 245 hides, SAM 3.1 63\%.
+  \item Traced about half of SAM 3.1's deficit to its shipped tracking settings by reading the source code; a controlled run raised its car
+        HOTA from 74.0 to 78.3, against SAM 3's 82.3. Isolated a separate fault that halts it on long, crowded sequences.
   \item Built a Kalman-filter identity layer on SAM's output: it repaired SAM 3.1 (identity through occlusion 63\% to 70\%, McNemar
-        p = 0.004) but not SAM 3. Motion outside the tracker says where an object is, not who it is.
-  \item Mined 10,871 pedestrian occlusions in 1,256 NVIDIA driving clips with a line-of-sight test; on that geometry an occlusion-aware tracker
-        kept 57\% of identities through 1 to 5 second hides, against 2\% for a standard tracker.
-  \item Built a simulation lab for controlled occlusion experiments: identity kept rose from 0\% to 89\% as visibility reasoning, negative
-        information and appearance re-identification were added; MathWorks JIPDA rose from 0\% to 57\% with the same visibility model.
+        p = 0.004) but not SAM 3, which showed that motion outside the tracker says where an object is, not who it is.
+  \item Mined 10,871 pedestrian occlusions in 1,256 NVIDIA driving clips with a 3D line-of-sight test. On that
+        geometry an occlusion-aware tracker kept 57\% of identities through 1 to 5 second hides; a standard tracker kept 2\%.
+  \item Built a simulation lab for controlled occlusion experiments (46 automated tests): identity kept rose from 0\% to 89\% as visibility
+        reasoning, negative information and re-identification were added; MathWorks JPDA reached 57\%.
 \end{itemize}
 
-\entry{Robotics Research Assistant}{University of Maine Robotics Laboratory}{2025 -- present}
+\entry{Robotics Research Assistant, CVAR Lab}{University of Maine}{2025 -- present}
 \begin{itemize}
-  \item Build mobile robots end to end, from sensor integration and wiring to ROS 2 nodes and lidar point-cloud perception.
+  \item Built mobile robots end to end, from sensor integration and wiring to ROS 2 nodes and lidar point-cloud perception.
   \item Implemented EKF localization fusing IMU, wheel odometry and lidar, with costmap planning and obstacle avoidance.
 \end{itemize}
 
 \section{Research Outputs}
 \begin{itemize}
-  \item Technical report: \emph{Solving occlusion in MOTS: SAM 3 and SAM 3.1 zero-shot}, October 2026. Available on request.
-  \item Code: SAM 3 / SAM 3.1 benchmark and evaluation, \href{https://github.com/sadeeqgandalf/av-stack}{github.com/sadeeqgandalf/av-stack}.
+  \item Technical report: \emph{Solving occlusion in MOTS: SAM 3 and SAM 3.1 zero-shot}, CVAR Lab, October 2026. Available on request.
+  \item Code: SAM 3 / SAM 3.1 benchmark, evaluation and filter layer, \href{https://github.com/sadeeqgandalf/av-stack}{github.com/sadeeqgandalf/av-stack}.
   \item Code and live lab: occlusion-aware tracking, \href{https://github.com/sadeeqgandalf/lunar-occlusion-tracking}{github.com/sadeeqgandalf/lunar-occlusion-tracking}.
 \end{itemize}
 
@@ -58,15 +59,16 @@ and with Meta's SAM 3 and SAM 3.1 run zero-shot.\par\vspace{1pt}
 \entry{Materials Engineer}{R.W. Gillespie, Maine}{2024}
 \entry{Machine Learning Engineer and Structural Steel Fabricator}{NewTech Steel, Nigeria}{2018 -- 2023}
 \begin{itemize}
-  \item Deployed a computer vision model for real-time fatigue and defect detection in steel; automating the test cut its time by 50\%.
+  \item Built and deployed a computer vision model for real-time fatigue and defect detection in steel, halving inspection time.
+\end{itemize}
+\entry{Civil Engineering Intern}{Federal Capital Development Authority, Abuja, Nigeria}{Feb -- Aug 2017}
+\begin{itemize}
+  \item Worked on the construction of wastewater treatment facilities for Nigeria's Federal Capital Territory.
 \end{itemize}
 
 \section{Technical Skills}
-\skillrow{Methods}{multi-object tracking, Kalman filtering (EKF, UKF), data association (Hungarian, JPDA, MHT), instance segmentation, re-identification}
+\skillrow{Methods}{multi-object tracking, Kalman filtering (EKF, UKF), data association (Hungarian, JPDA, MHT), 3D geometry and ray casting, re-identification}
 \skillrow{Software and data}{Python, C++17, PyTorch, ROS 2, OpenCV, filterpy, MATLAB, TrackEval; KITTI, KITTI-MOTS, MOTS20, MOT17, NVIDIA PhysicalAI-AV}
-
 \skillrow{Certifications}{AWS Certified Machine Learning Specialty; AWS Certified Solutions Architect, Associate}
-
-% References: give names and emails only when an application asks; they are not listed here.
 
 \end{document}
