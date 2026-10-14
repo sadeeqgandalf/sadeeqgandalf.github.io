@@ -1,0 +1,60 @@
+% Industry CV: one page. Build: tectonic Sadeeq_Adeyemi_CV_Industry.tex
+% To tailor for a posting: use its job title in the line under the name, and reorder the skill rows so its
+% must-haves come first. Add a skill only if you can discuss it in an interview.
+\documentclass[10pt,letterpaper]{article}
+\input{cv_style}
+\renewcommand{\BodySize}{9.7}
+\begin{document}
+\fontsize{\BodySize}{12.4}\selectfont
+
+\head{Perception Engineer, Multi-Object Tracking and State Estimation}{%
+Bangor, Maine \sep \href{mailto:sideeqadeyemi@icloud.com}{sideeqadeyemi@icloud.com}\\
+\href{https://sadeeqgandalf.github.io}{sadeeqgandalf.github.io} \sep \href{https://github.com/sadeeqgandalf}{github.com/sadeeqgandalf} \sep
+\href{https://www.linkedin.com/in/sadeeq-a-a90bb425a}{linkedin.com/in/sadeeq-a-a90bb425a}}
+
+\section{Summary}
+I build tracking systems that keep an object's identity while it is hidden from the camera, and I measure them on public
+benchmarks. Over the past year I have taken that one problem from simulation, to real driving data, to Meta's SAM 3
+segmentation models. I work in Python, C++, PyTorch and ROS 2, and use AI coding agents daily.
+
+\section{Skills}
+\skillrow{Tracking and estimation}{multi-object tracking and segmentation, Kalman filters (EKF, UKF), sensor fusion, data association (Hungarian, JPDA, MHT)}
+\skillrow{Perception}{instance segmentation, SAM 3, YOLOv8, re-identification, lidar and camera calibration and projection, point clouds}
+\skillrow{Software}{Python, C++17, PyTorch, ROS 2, OpenCV, NumPy, filterpy, MATLAB, Git, Docker, Linux, AWS}
+\skillrow{Evaluation}{HOTA, IDF1 and MOTA with TrackEval; KITTI, KITTI-MOTS, MOTS20, MOT17, NVIDIA PhysicalAI-AV}
+
+\section{Experience}
+\entry{Robotics Research Assistant}{University of Maine Robotics Laboratory}{2025 -- present}
+\begin{itemize}
+  \item Build mobile robots end to end, from sensor integration and wiring to ROS 2 nodes and lidar point-cloud perception.
+  \item Implemented EKF localization fusing IMU, wheel odometry and lidar, with costmap planning and obstacle avoidance.
+\end{itemize}
+
+\entry{Materials Engineer}{R.W. Gillespie, Maine}{2024}
+
+\entry{Machine Learning Engineer and Structural Steel Fabricator}{NewTech Steel, Nigeria}{2018 -- 2023}
+\begin{itemize}
+  \item Deployed a computer vision model for real-time fatigue and defect detection in steel; automating the test cut its time by 50\%.
+  \item Led fabrication and erection of structural steel for factory and auditorium projects.
+\end{itemize}
+
+\section{Project}
+\entry{Tracking Through Occlusion}{independent research}{2026}
+\begin{itemize}
+  \item Benchmarked SAM 3 and SAM 3.1 zero-shot with the official HOTA evaluation on an A100. On KITTI-MOTS val, cars scored 82.6 HOTA
+        with SAM 3 and 74.6 with SAM 3.1. On MOTS20 train, SAM 3 kept a person's identity through 94\% of 245 real occlusions, SAM 3.1 63\%.
+  \item Traced half of SAM 3.1's deficit to its shipped tracking settings by reading Meta's source code; a controlled run raised its car HOTA from 74.0 to 78.3.
+  \item Added a Kalman-filter layer that gives a lost ID back when the object reappears: SAM 3.1's identity kept through occlusion rose from 63\% to 70\%.
+  \item Mined 10,871 pedestrian occlusions from 1,256 NVIDIA driving clips with a ray-cast line-of-sight test, with lidar projected into the fisheye camera.
+  \item On that real geometry, an occlusion-aware tracker kept identity through 1 to 5 second hides in 57\% of 1,600 cases; a standard tracker kept 2\%.
+  \item Built a live 3D browser lab for occlusion experiments (46 automated tests), cross-checked against MathWorks GNN, JPDA and TOMHT trackers.
+\end{itemize}
+
+\section{Education}
+\entry{MS, Data Science and Engineering}{University of Maine}{2025 -- present}
+\entry{MS, Structural Engineering}{University of Maine}{2023 -- 2025}
+\entry{MSc, Project Management}{University of Portsmouth, United Kingdom}{2023}
+\entry{BEng, Civil Engineering}{Federal University of Technology Akure, Nigeria}{2019}
+\vspace{4pt}{\bfseries Certifications:} AWS Certified Machine Learning Specialty; AWS Certified Solutions Architect, Associate\par
+
+\end{document}

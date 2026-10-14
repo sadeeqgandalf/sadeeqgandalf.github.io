@@ -107,6 +107,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <div class="links">
       <a class="btn primary" href="https://sadeeqgandalf.github.io/lunar-occlusion-tracking/track.html">Open the live tracking lab</a>
       <a class="btn" href="cv.pdf">CV (PDF)</a>
+      <a class="btn" href="cv-research.pdf">Research CV (PDF)</a>
       <a class="btn" href="https://github.com/sadeeqgandalf">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/sadeeq-a-a90bb425a">LinkedIn</a>
       <a class="btn" href="mailto:sideeqadeyemi@icloud.com">Email</a>
@@ -124,7 +125,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <div class="kpi"><b>75.6 → 6.6</b><span>identity switches per run after fusing camera, lidar and a second camera</span></div>
     <div class="kpi"><b>10,871</b><span>pedestrian occlusion events mined from 1,256 real driving clips in 12 countries</span></div>
     <div class="kpi"><b>100 / 100</b><span>closed-loop driving runs passed with zero collisions</span></div>
-    <div class="kpi"><b>1.6 ms</b><span>per tracking frame, inside a 100 ms real-time budget</span></div>
+    <div class="kpi"><b>94% vs 63%</b><span>of 245 real occlusions after which SAM 3 and SAM 3.1 return the same identity (MOTS20 train)</span></div>
   </div>
 </section>
 
@@ -300,9 +301,9 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
   <h2>Where this is going</h2>
   <p class="sub">The goal: track and segment every object in every frame, and keep each identity through every hide.</p>
   <ol class="steps">
-    <li><strong>Identity from appearance.</strong> Use segmentation masks from SAM 3 on a GPU, so that who is who after a hide is settled by what the person looks like and not by where they might have walked. My benchmark says SAM 3 is the right model: it kept identity through 94% of real occlusions.</li>
-    <li><strong>Positions from the detector, not the labels.</strong> A real detector now decides who is seen. The next version also takes each person's position from the video and lidar.</li>
-    <li><strong>Close the two gaps the experiments exposed.</strong> Soft association in the style of JIPDA, and a motion model that knows people stop.</li>
+    <li><strong>Motion inside SAM 3's tracker.</strong> A filter that helps choose among SAM's candidate masks and decides which frames enter its memory, as SAMURAI does for one object on SAM 2. My filter outside the tracker helped only where identity was already weak.</li>
+    <li><strong>Recovery after an occlusion.</strong> When a lost object is found again, rebuild its path through the hide and re-run the filter along it, as in OC-SORT. My filter is trustworthy for about a second of hiding; this targets longer hides.</li>
+    <li><strong>Scores on the test sets.</strong> Submit to the KITTI-MOTS and MOTS20 servers, where the current best HOTA is 76.4 for cars and 68.1 on MOTS20.</li>
     <li><strong>Ground truth through hides.</strong> Masks, identities and measured visibility for every frame, so any tracker can be scored on exactly the moments that break it.</li>
   </ol>
 </section>
@@ -353,9 +354,9 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <article class="card">
       <h3>Open-Vocabulary Segmentation &amp; Tracking</h3>
       <p>Text-prompted segmentation and tracking (MOTS) on KITTI and BDD100K driving video with Meta's SAM 3, merging per-prompt masklets into one identity space. Patched to run on CPU and Apple Silicon as well as CUDA.</p>
-      <p class="result">Benchmarked SAM 3 against SAM 3.1 on KITTI-MOTS and MOTS20 with HOTA, on an A100 GPU. SAM 3 kept identity better on every benchmark: MOTS20 IDF1 <strong>84.8 vs 68.3</strong>, HOTA 72.6 vs 61.5. On 245 real occlusion events, SAM 3 kept the person's identity <strong>94%</strong> of the time and SAM 3.1 63%: SAM 3.1 finds the person again but gives them a new ID.</p>
+      <p class="result">Benchmarked SAM 3 against SAM 3.1 zero-shot with the official HOTA evaluation, on an A100 GPU. On the public-label splits (KITTI-MOTS val, MOTS20 train), SAM 3 scored higher everywhere: KITTI-MOTS cars HOTA <strong>82.6 vs 74.6</strong>, MOTS20 72.6 vs 61.5. On 245 real occlusion events, SAM 3 kept the person's identity <strong>94%</strong> of the time and SAM 3.1 63%. Reading Meta's source showed the two ship with different tracking settings: giving SAM 3.1 SAM 3's settings raised its car HOTA from 74.0 to 78.3, about half the gap. A Kalman-filter layer that hands a lost ID back raised SAM 3.1's identity through occlusion from 63% to 70%, but did not help SAM 3: motion outside the tracker says where an object is, not who it is. Test-set scores are not yet submitted.</p>
       <div class="tags"><span>SAM 3</span><span>MOTS</span><span>HOTA</span><span>KITTI-MOTS</span><span>MOTS20</span><span>A100</span></div>
-      <p class="more"><a href="https://github.com/sadeeqgandalf/ComputerVision_Research">Code →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/av-stack/tree/main/research/sam_mots_benchmark">Benchmark →</a></p>
+      <p class="more"><a href="https://github.com/sadeeqgandalf/ComputerVision_Research">Code →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/av-stack/tree/main/research/sam_mots_benchmark">Benchmark →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/av-stack/tree/main/research/sam_mots_benchmark/ekf">Filter layer and settings study →</a></p>
     </article>
     <article class="card">
       <h3>AV Perception Pipeline</h3>
@@ -443,7 +444,9 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
     <li>H. W. Kuhn. The Hungarian method for the assignment problem. <em>Naval Research Logistics Quarterly</em>, 1955. <span class="use">Assignment.</span></li>
     <li>A. Bewley, Z. Ge, L. Ott, F. Ramos, B. Upcroft. Simple online and realtime tracking. <em>ICIP</em>, 2016. <span class="use">Baseline family.</span></li>
     <li>N. Wojke, A. Bewley, D. Paulus. Simple online and realtime tracking with a deep association metric. <em>ICIP</em>, 2017. <span class="use">Appearance re-identification.</span></li>
-    <li>J. Cao, J. Pang, X. Weng, R. Khirodkar, K. Kitani. Observation-centric SORT. <em>CVPR</em>, 2023. <span class="use">Related approach, planned comparison.</span></li>
+    <li>J. Cao, J. Pang, X. Weng, R. Khirodkar, K. Kitani. Observation-centric SORT. <em>CVPR</em>, 2023. <span class="use">Recovery after occlusion: next step for the SAM identity layer.</span></li>
+    <li>C.-Y. Yang, H.-W. Huang, W. Chai, Z. Jiang, J.-N. Hwang. SAMURAI: adapting Segment Anything Model for zero-shot visual tracking with motion-aware memory. arXiv:2411.11922, 2024. <span class="use">Motion inside a SAM tracker.</span></li>
+    <li>R. R. Labbe. <em>Kalman and Bayesian Filters in Python</em> and the filterpy library. <span class="use">Filter maths of the SAM identity layer.</span></li>
     <li>T. Fortmann, Y. Bar-Shalom, M. Scheffe. Sonar tracking of multiple targets using joint probabilistic data association. <em>IEEE J. Oceanic Engineering</em>, 1983. <span class="use">JPDA baseline.</span></li>
     <li>D. Musicki, R. Evans. Joint integrated probabilistic data association: JIPDA. <em>IEEE Trans. Aerospace and Electronic Systems</em>, 2004. <span class="use">Strongest motion-only baseline.</span></li>
     <li>D. B. Reid. An algorithm for tracking multiple targets. <em>IEEE Trans. Automatic Control</em>, 1979. <span class="use">MHT baseline.</span></li>
@@ -478,6 +481,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
   <div class="links">
     <a class="btn primary" href="mailto:sideeqadeyemi@icloud.com">Email</a>
     <a class="btn" href="cv.pdf">CV (PDF)</a>
+    <a class="btn" href="cv-research.pdf">Research CV (PDF)</a>
     <a class="btn" href="https://www.linkedin.com/in/sadeeq-a-a90bb425a">LinkedIn</a>
     <a class="btn" href="https://github.com/sadeeqgandalf">GitHub</a>
   </div>

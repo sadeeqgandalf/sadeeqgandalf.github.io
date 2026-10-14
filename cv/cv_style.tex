@@ -1,0 +1,33 @@
+% Shared look for both CVs. Single column (applicant tracking systems read it in order), serif body, small
+% blue section heads, dates in grey on the right. Built with tectonic (XeTeX). No tables, no text boxes, no icons.
+\usepackage[letterpaper,top=0.5in,bottom=0.5in,left=0.6in,right=0.6in]{geometry}
+\usepackage{fontspec}
+% Merriweather body, Open Sans headings (the pairing of the example layout). Tested: both pypdf and pdfminer read
+% every word and "AWS" correctly; Source Serif, Latin Modern, TeX Gyre and Libertinus did not.
+\usepackage{merriweather}
+\usepackage{opensans}
+\newcommand{\headfont}{\sffamily}
+\usepackage{enumitem,titlesec,xcolor}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}
+% Left-aligned, no hyphenation: justified lines squeeze the spaces between words, and some applicant tracking
+% systems then read words run together; hyphens split keywords.
+\AtBeginDocument{\raggedright}\hyphenpenalty=10000\exhyphenpenalty=10000\sloppy
+\definecolor{ink}{HTML}{1A1F27}\definecolor{accent}{HTML}{1F5F8B}\definecolor{grey}{HTML}{5F6873}
+\color{ink}
+
+\newcommand{\BodySize}{9.3}
+\titleformat{\section}{\headfont\bfseries\fontsize{10.5}{12}\selectfont\color{accent}\MakeUppercase}{}{0pt}{}
+\titlespacing*{\section}{0pt}{9pt}{3pt}
+\setlist[itemize]{leftmargin=1.05em,itemsep=1.4pt,topsep=1.5pt,parsep=0pt,partopsep=0pt,label={\color{grey}\textendash}}
+
+% \entry{Title}{Organisation, place}{Dates}
+\newcommand{\entry}[3]{\vspace{4pt}{\bfseries #1}\ifx\relax#2\relax\else, #2\fi\hfill{\color{grey}\small #3}\par}
+% \skillrow{Label}{Items}
+\newcommand{\skillrow}[2]{{\bfseries #1:} #2\par\vspace{1.5pt}}
+\newcommand{\sep}{\enspace{\color{grey}|}\enspace}
+\newcommand{\head}[2]{%
+  {\fontsize{22}{26}\selectfont\bfseries Sadeeq Adeyemi}\par\vspace{2pt}
+  {\headfont\fontsize{11.5}{14}\selectfont\color{accent} #1}\par\vspace{5pt}
+  {\small #2}\par}
