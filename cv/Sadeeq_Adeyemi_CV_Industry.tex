@@ -7,7 +7,7 @@
 \input{cv_style}
 \renewcommand{\BodySize}{9.5}
 \begin{document}
-\fontsize{\BodySize}{12.2}\selectfont
+\fontsize{\BodySize}{12.0}\selectfont
 
 \head{Perception Engineer, 3D Computer Vision and Multi-Object Tracking}{%
 Bangor, Maine \sep \href{mailto:sideeqadeyemi@icloud.com}{sideeqadeyemi@icloud.com}\\
@@ -28,8 +28,8 @@ vision model on a steel plant floor to research on Meta's SAM 3.
 \section{Experience}
 \entry{Graduate Research Assistant}{CVAR Lab (Computer Vision and Robotics), University of Maine}{2025 -- present}
 \begin{itemize}
-  \item Benchmarked Meta's SAM 3 and SAM 3.1 on KITTI-MOTS and MOTS20 with the official HOTA evaluation on cloud A100 GPUs. SAM 3 scored
-        82.6 car HOTA (val) and kept identity through 94\% of 245 real occlusions; SAM 3.1 scored 74.6 and 63\%.
+  \item Benchmarked Meta's SAM 3 and SAM 3.1 on KITTI-MOTS and MOTS20 with the official HOTA code on A100 GPUs: SAM 3
+        scored 82.6 car HOTA (val) and kept identity through 94\% of 245 real occlusions; SAM 3.1, 74.6 and 63\%.
   \item Traced about half of SAM 3.1's deficit to its shipped tracking settings by reading Meta's source code; a controlled rerun raised
         its car HOTA from 74.0 to 78.3. Isolated a separate fault that halts it on long, crowded sequences.
   \item Built a Kalman-filter identity layer on SAM's output that returns a lost ID when the object reappears, raising SAM 3.1's identity
@@ -57,6 +57,13 @@ vision model on a steel plant floor to research on Meta's SAM 3.
 \entry{Civil Engineering Intern}{Federal Capital Development Authority, Abuja, Nigeria}{Feb -- Aug 2017}
 \begin{itemize}
   \item Worked on the construction of wastewater treatment facilities for Nigeria's Federal Capital Territory.
+\end{itemize}
+
+\section{Projects}
+\entry{Occlusion-Aware 3D Multi-Object Tracker, C++17}{\href{https://github.com/sadeeqgandalf/occlusion-tracker}{github.com/sadeeqgandalf/occlusion-tracker}}{2026}
+\begin{itemize}
+  \item Kept identities better than the AB3DMOT baseline on KITTI val (association accuracy 77.7 vs 76.6 cars, 49.4 vs 48.4
+        pedestrians) at 0.15 ms per frame, by modelling track existence from measured detection rates and sight lines.
 \end{itemize}
 
 \section{Education}
