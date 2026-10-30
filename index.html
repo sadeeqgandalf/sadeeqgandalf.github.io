@@ -321,6 +321,14 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
       <p class="more"><a href="https://github.com/sadeeqgandalf/occlusion-tracker">Code →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/occlusion-tracker/releases/download/v1.0/kitti_0019.mp4">Full video (89 MB) →</a></p>
     </article>
     <article class="card">
+      <a href="https://sadeeqgandalf.github.io/lunar-occlusion-tracking/policy.html?run=37"><img class="media" src="media/policy_lab_dead_ahead.gif" alt="Four rovers, one per policy, approach a rock dead ahead: the expert passes right, regression heads for the middle and crashes, the autoregressive policy passes left, diffusion passes right" loading="lazy"></a>
+      <h3>Multimodal Policy Lab</h3>
+      <p>Three imitation-learning policies learn to drive a rover around a rock from the same expert demonstrations: regression (behaviour cloning), an autoregressive transformer over action tokens, and a diffusion policy. With the rock dead ahead the expert passes left or right, 50/50, and the average of those two answers points straight at the rock. Every policy is scored closed loop, and the trained networks run live in the browser.</p>
+      <p class="result">Rock dead ahead: regression crashes in <strong>19%</strong> of runs, the autoregressive policy in <strong>3.5%</strong>, diffusion in <strong>0.5%</strong> (5 training seeds × 400 runs). In random worlds all three stay under 1%.</p>
+      <div class="tags"><span>PyTorch</span><span>imitation learning</span><span>diffusion policy</span><span>transformers</span><span>closed-loop evaluation</span></div>
+      <p class="more"><a href="https://sadeeqgandalf.github.io/lunar-occlusion-tracking/policy.html">Live lab →</a> &nbsp; <a href="https://github.com/sadeeqgandalf/lunar-occlusion-tracking/tree/main/policy">Code and results →</a></p>
+    </article>
+    <article class="card">
       <video class="media" src="media/occluded_pedestrian.mp4" poster="" autoplay muted loop playsinline preload="metadata" aria-label="Replay: autonomous car slowing for a pedestrian hidden behind a bus"></video>
       <h3>Autonomous Driving Stack</h3>
       <p>A full closed-loop stack in Python: EKF localization, open-vocabulary camera perception, lidar and radar fusion into a multi-object tracker, prediction, Frenet lattice planning, LQR/PID control and an independent safety monitor. It never sees simulator ground truth.</p>
@@ -413,6 +421,7 @@ footer{border-top:1px solid var(--line);margin-top:4rem;padding:1.6rem 20px 3rem
       <tr><td><strong>Sensor fusion</strong></td><td>Camera, lidar, radar and a second viewpoint fused at measurement level, each with its own visibility model.</td><td>Lunar lab, driving stack</td></tr>
       <tr><td><strong>3-D geometry and calibration</strong></td><td>Fisheye camera projection, lidar motion compensation per point, time synchronization, ray casting against oriented boxes.</td><td>Occlusion mining</td></tr>
       <tr><td><strong>Deep learning</strong></td><td>PyTorch: a Vision Transformer from scratch, SAM 3 segmentation and tracking, YOLOv8 detection, PyTorch3D rendering.</td><td>Computer vision projects</td></tr>
+      <tr><td><strong>Robot learning</strong></td><td>Imitation learning from demonstrations: behaviour cloning, an autoregressive transformer over action tokens and a diffusion policy, compared closed loop over training seeds.</td><td>Multimodal Policy Lab</td></tr>
       <tr><td><strong>State estimation</strong></td><td>EKF, UKF and particle filters with consistency checks. EKF localization fusing IMU, wheel odometry and lidar in ROS 2.</td><td>Navigation lab, UMaine robotics lab</td></tr>
       <tr><td><strong>Real-time code</strong></td><td>Tracker at 1.6 ms per frame. Navigation EKF ported to C++17 at 0.1 µs per step.</td><td>Lunar lab</td></tr>
       <tr><td><strong>Evaluation</strong></td><td>HOTA, MOTA, IDF1, GOSPA, Monte Carlo seeds, Wilson confidence intervals, cross-checks against reference toolboxes.</td><td>Every project</td></tr>
